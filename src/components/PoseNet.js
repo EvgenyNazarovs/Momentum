@@ -67,11 +67,8 @@ export default function PoseNet({
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.8
-<<<<<<< HEAD
 
         ctx.fillStyle = 'rgba(255,192,203,0.5)';
-=======
->>>>>>> 30049d934de294fcec290b64e73ac6f3d03388eb
 
 
         ctx.fillRect(50, 50, 200, 200)
@@ -82,7 +79,7 @@ export default function PoseNet({
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => drawKeypoints(ctx, keypoints))
+        confidentPoses.forEach(({ keypoints }) => drawWithNose(ctx, keypoints))
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
@@ -106,7 +103,6 @@ export default function PoseNet({
       <Loading name="model" target={net} />
       <Loading name="input" target={image} />
       <font color="red">{errorMessage}</font>
-      <img src={texture1}/>
       <video
         playsInline
         ref={videoRef}

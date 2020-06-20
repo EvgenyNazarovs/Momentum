@@ -53,6 +53,19 @@ export function drawWithNose(ctx, keypoints) {
   }
 }
 
+export function drawWithAllPoints(ctx, keypoints) {
+  keypoints.forEach(({ position }) => {
+    const { x, y } = position
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'round'
+    ctx.strokeStyle = 'purple'
+    ctx.lineTo(x, y)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    })
+}
+
 
 
 
