@@ -3,7 +3,8 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton } from "../util"
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithAllPoints, drawWithNose } from "../util"
+import pattern from './Texture5.png'
 import './PoseNet.css'
 
 export default function PoseNet({
@@ -46,8 +47,9 @@ export default function PoseNet({
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
-
-
+    const img = new Image(10, 10);
+    img.src = pattern
+    // img.onload = function()
 
     const intervalID = setInterval(async () => {
       try {
@@ -62,19 +64,28 @@ export default function PoseNet({
 
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
-
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)'
+        ctx.fillRect(0, 0, width, height)
+        ctx.fillRect(0, 0, width, height)
+        ctx.fillRect(0, 0, width, height)
+        ctx.fillRect(0, 0, width, height)
 
         // we can set up our shapes and visuals here.
-        ctx.globalAlpha = 0.2
+        ctx.globalAlpha = 0.9
 
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(0, 0, 75, 75);
+        ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
+        // ctx.fillRect(0, 0, 75, 75);
 
+        ctx.fillRect(50, 50, 178, 178)
+
+
+        let patrn = ctx.createPattern(img, 'repeat');
+        ctx.fillStyle = patrn;
         ctx.fillRect(50, 50, 200, 200)
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => drawKeypoints(ctx, keypoints))
+        confidentPoses.forEach(({ keypoints }) => drawWithAllPoints(ctx, keypoints))
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
