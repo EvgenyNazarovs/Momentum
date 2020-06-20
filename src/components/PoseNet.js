@@ -47,7 +47,7 @@ export default function PoseNet({
     if (!net || !image) return () => {}
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
-    // const ctx = canvasRef.current.getContext("2d")
+    const ctx = canvasRef.current.getContext("2d")
     // const img = new Image(10, 10);
     // img.src = pattern
     // img.onload = function()
@@ -74,21 +74,25 @@ export default function PoseNet({
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
-        ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
+
         // ctx.fillRect(0, 0, 75, 75);
 
-        ctx.fillRect(50, 50, 178, 178)
+        // ctx.fillRect(50, 50, 178, 178)
 
 
 
-        let patrn = ctx.createPattern(img, 'repeat');
-        ctx.fillStyle = patrn;
-        ctx.fillRect(50, 50, 200, 200)
-        ctx.fillRect(740, 50, 200, 200)
 
-        ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
-        ctx.fillRect(50, 450, 200, 200)
-        ctx.fillRect(740, 450, 200, 200)
+        // let patrn = ctx.createPattern(img, 'repeat');
+        // ctx.fillStyle = patrn;
+          ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
+        ctx.fillRect(90, 40, 280, 280) //upper left box
+
+          ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
+        ctx.fillRect(620, 40, 280, 280) //uppper right box
+
+
+        ctx.fillRect(90, 350, 280, 280) // lower left box
+        ctx.fillRect(620, 350, 280, 280) //lower right box
         // ctx.fillRect()
 
 

@@ -7,12 +7,22 @@ import cNote from './sounds/CNote.mp3'
 import gNote from './sounds/GNote.mp3'
 import aNote from './sounds/ANote.mp3'
 import dNote from './sounds/DNote.mp3'
+import useInputImage from "./hooks/useInputImage"
 
 
 function App() {
   const [posesString, setPosesString] = useState([])
 
+const canvasRef = useRef(null)
+
   useEffect(() => {
+
+      const canvas = canvasRef.current
+      const ctx2 = canvas.getContext('2d')
+      ctx2.fillStyle = 'green'
+        ctx2.fillRect(150, 40, 280, 280)
+
+
     const backgroundSounds = document.getElementById("background-sounds");
     backgroundSounds.play()
     const cNote = document.getElementById("c-note");
@@ -53,6 +63,12 @@ function App() {
     <audio id="g-note" src={gNote}></audio>
     <audio id="d-note" src={dNote}></audio>
     <audio id="a-note" src={aNote}></audio>
+
+    <canvas
+        width={window.innerWidth-300}
+        height={window.innerHeight}
+        ref={canvasRef}
+        ></canvas>
 
 
     </div>
