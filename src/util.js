@@ -33,7 +33,7 @@ export function drawKeypoints(ctx, keypoints) {
     const { x, y } = position
     ctx.beginPath()
     ctx.arc(x, y, 5, 0, 2 * Math.PI, false)
-    ctx.fillStyle = "aqua"
+    ctx.fillStyle = "rgb(255,127,80)"
     ctx.fill()
   })
 }
