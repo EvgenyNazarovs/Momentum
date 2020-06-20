@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton } from "../util"
+import { drawKeypoints, getConfidentPoses, drawWithNose } from "../util"
 import './PoseNet.css'
+import texture1 from '../assets/Texture1.png'
 
 export default function PoseNet({
   style,
@@ -69,6 +70,7 @@ export default function PoseNet({
 
         ctx.fillStyle = 'rgba(255,192,203,0.5)';
 
+
         ctx.fillRect(50, 50, 200, 200)
         ctx.fillRect(740, 50, 200, 200)
         ctx.fillRect(50, 450, 200, 200)
@@ -101,6 +103,7 @@ export default function PoseNet({
       <Loading name="model" target={net} />
       <Loading name="input" target={image} />
       <font color="red">{errorMessage}</font>
+      <img src={texture1}/>
       <video
         playsInline
         ref={videoRef}
