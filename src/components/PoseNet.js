@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
-import useLoadPoseNet from "../hooks/useLoadPoseNet
+import useLoadPoseNet from "../hooks/useLoadPoseNet"
 import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose } from "../util"
 import pattern from './Texture5.png'
 import './PoseNet.css'
@@ -47,9 +47,9 @@ export default function PoseNet({
     if (!net || !image) return () => {}
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
-    const ctx = canvasRef.current.getContext("2d")
-    const img = new Image(10, 10);
-    img.src = pattern
+    // const ctx = canvasRef.current.getContext("2d")
+    // const img = new Image(10, 10);
+    // img.src = pattern
     // img.onload = function()
 
     const intervalID = setInterval(async () => {
@@ -66,10 +66,10 @@ export default function PoseNet({
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
@@ -85,6 +85,8 @@ export default function PoseNet({
         ctx.fillStyle = patrn;
         ctx.fillRect(50, 50, 200, 200)
         ctx.fillRect(740, 50, 200, 200)
+
+        ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
         ctx.fillRect(50, 450, 200, 200)
         ctx.fillRect(740, 450, 200, 200)
         // ctx.fillRect()
