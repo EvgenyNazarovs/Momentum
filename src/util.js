@@ -32,8 +32,8 @@ export function drawKeypoints(ctx, keypoints) {
   keypoints.forEach(({ position }) => {
     const { x, y } = position
     ctx.beginPath()
-    ctx.arc(x, y, 5, 0, 2 * Math.PI, false)
-    ctx.fillStyle = "rgb(255,127,80)"
+    ctx.arc(x, y, 15, 0, 2 * Math.PI, false)
+    ctx.fillStyle = "#006666"
     ctx.fill()
   })
 }

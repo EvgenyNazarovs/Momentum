@@ -65,12 +65,15 @@ export default function PoseNet({
 
 
         // we can set up our shapes and visuals here.
-        ctx.globalAlpha = 0.2
+        ctx.globalAlpha = 0.8
 
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(0, 0, 75, 75);
+        ctx.fillStyle = 'rgba(255,192,203,0.5)';
 
         ctx.fillRect(50, 50, 200, 200)
+        ctx.fillRect(740, 50, 200, 200)
+        ctx.fillRect(50, 450, 200, 200)
+        ctx.fillRect(740, 450, 200, 200)
+        // ctx.fillRect()
 
 
         onEstimateRef.current(confidentPoses)
@@ -111,6 +114,7 @@ export default function PoseNet({
         ref={canvasRef}
         width={width}
         height={height}
+        onClick={e => console.log(e.clientX, e.clientY)}
       />
     </>
   )
@@ -175,7 +179,7 @@ PoseNet.defaultProps = {
   style: {},
   className: "",
   facingMode: "user",
-  frameRate: 20,
+  frameRate: 15,
   input: undefined,
   onEstimate: () => {},
   inferenceConfig: {},
