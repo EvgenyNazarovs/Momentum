@@ -8,10 +8,12 @@ import gNote from './sounds/GNote.mp3'
 import aNote from './sounds/ANote.mp3'
 import dNote from './sounds/DNote.mp3'
 import useInputImage from "./hooks/useInputImage"
+import { Drawer } from '@material-ui/core';
 
 
 function App() {
   const [posesString, setPosesString] = useState([])
+
 
 const canvasRef = useRef(null)
 
@@ -65,6 +67,7 @@ const canvasRef = useRef(null)
     <audio id="a-note" src={aNote}></audio>
 
     <canvas
+
         width={window.innerWidth-300}
         height={window.innerHeight}
         ref={canvasRef}
