@@ -79,6 +79,7 @@ export default function PoseNet({
         ctx.fillRect(50, 50, 178, 178)
 
 
+
         let patrn = ctx.createPattern(img, 'repeat');
         ctx.fillStyle = patrn;
         ctx.fillRect(50, 50, 200, 200)
