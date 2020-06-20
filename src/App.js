@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PoseNet from './components/PoseNet'
 import './App.css';
+import NavBar from './components/NavBar.js'
 
 function App() {
   const [posesString, setPosesString] = useState([])
@@ -26,15 +27,13 @@ function App() {
 
   return (
     <div className="App">
-  <PoseNet
-    inferenceConfig={{ decodingMethod: "single-person" }}
-    onEstimate={poses => {
-          if (poses.length !== 0) setPosesString(poses[0].keypoints)
-    }}
-  />
-
-
-
+      <NavBar/>
+      <PoseNet
+        inferenceConfig={{ decodingMethod: "single-person" }}
+        onEstimate={poses => {
+              if (poses.length !== 0) setPosesString(poses[0].keypoints)
+        }}
+      />
     </div>
   );
 }

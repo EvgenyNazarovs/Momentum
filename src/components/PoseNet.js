@@ -65,7 +65,7 @@ export default function PoseNet({
 
 
         // we can set up our shapes and visuals here.
-        ctx.globalAlpha = 0.2
+        ctx.globalAlpha = 0.8
 
         ctx.fillStyle = 'blue';
         ctx.fillRect(0, 0, 75, 75);

@@ -1,11 +1,16 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-bar {
+  background-color: purple;
+  border: 2px solid black;
+  width: 100%;
+  color: white;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
