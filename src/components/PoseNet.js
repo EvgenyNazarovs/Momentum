@@ -47,8 +47,8 @@ export default function PoseNet({
     if (!net || !image) return () => {}
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
-    // const ctx = canvasRef.current.getContext("2d")
-    // const img = new Image(10, 10);
+    const ctx = canvasRef.current.getContext("2d")
+    const img = new Image(10, 10);
     // img.src = pattern
     // img.onload = function()
 
