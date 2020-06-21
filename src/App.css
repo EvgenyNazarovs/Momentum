@@ -41,3 +41,15 @@
     transform: rotate(360deg);
   }
 }
+
+canvas {
+    position:absolute;
+    left:200px;
+    top:0px;
+  }
+
+  video {
+    position:absolute;
+    left:200px;
+    top:0px;
+  }

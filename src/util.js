@@ -66,6 +66,83 @@ export function drawWithAllPoints(ctx, keypoints) {
     })
 }
 
+function toTuple({x, y}) {
+  return [x, y]
+}
+
+export function drawSkeleton(ctx, keypoints) {
+
+  const adjacentKeyPoints = posenet.getAdjacentKeyPoints(keypoints, 0.1)
+
+  adjacentKeyPoints.forEach(keypoints => {
+    drawSegment(
+      toTuple(keypoints[0].position),
+      toTuple(keypoints[1].position),
+      ctx
+    )
+  })
+
+}
+
+function drawSegment(
+  [firstX, firstY],
+  [nextX, nextY],
+  ctx
+) {
+  ctx.beginPath()
+  ctx.moveTo(firstX, firstY)
+  ctx.lineTo(nextX, nextY)
+  ctx.lineWidth = 10
+  ctx.strokeStyle = 'pink'
+  ctx.stroke()
+}
+
+export const connectedPartNames = [
+  ['leftHip', 'leftShoulder'], ['leftElbow', 'leftShoulder'],
+  ['leftElbow', 'leftWrist'], ['leftHip', 'leftKnee'],
+  ['leftKnee', 'leftAnkle'], ['rightHip', 'rightShoulder'],
+  ['rightElbow', 'rightShoulder'], ['rightElbow', 'rightWrist'],
+  ['rightHip', 'rightKnee'], ['rightKnee', 'rightAnkle'],
+  ['leftShoulder', 'rightShoulder'], ['leftHip', 'rightHip']
+];
+
+export const partNames = [
+  'nose', 'leftEye', 'rightEye', 'leftEar', 'rightEar', 'leftShoulder',
+  'rightShoulder', 'leftElbow', 'rightElbow', 'leftWrist', 'rightWrist',
+  'leftHip', 'rightHip', 'leftKnee', 'rightKnee', 'leftAnkle', 'rightAnkle'
+];
+
+export const partIds =
+    partNames.reduce((result, jointName, i) => {
+      result[jointName] = i;
+      return result;
+    }, {})
+
+
+
+export const connectedPartIndices = connectedPartNames.map(
+    ([jointNameA, jointNameB]) => {
+  
+  return  ([partIds[jointNameA], partIds[jointNameB]])
+
+
+  })
+
+export function getAdjacentKeyPoints(keypoints) {
+  return connectedPartIndices.reduce((result, [leftJoint, rightJoint]) => {
+
+    result.push([keypoints[leftJoint], keypoints[rightJoint]])
+    return result;
+  }, [])
+}
+
+
+
+
+
+
+
+
 
 
 // export function drawSkeleton(ctx, keypoints, minConfidence) {
