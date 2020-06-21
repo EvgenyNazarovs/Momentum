@@ -7,8 +7,7 @@ import gNote from './sounds/GNote.mp3'
 import aNote from './sounds/ANote.mp3'
 import dNote from './sounds/DNote.mp3'
 import useInputImage from "./hooks/useInputImage"
-import { Drawer } from '@material-ui/core';
-import './App.css';
+import Drawer from './components/Drawer.js'
 
 
 function App() {
@@ -18,15 +17,16 @@ function App() {
 const canvasRef = useRef()
 
   useEffect(() => {
-
-    const ctx = canvasRef.current.getContext("2d")
-    ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
-
-    ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
-    ctx.fillRect(90, 40, 280, 280) //upper left box
-    ctx.fillRect(620, 40, 280, 280) //uppper right box
-    ctx.fillRect(90, 350, 280, 280) // lower left box
-    ctx.fillRect(620, 350, 280, 280) //lower right box
+    // if (posesString.length === 0) return () => {}
+    //
+    // const ctx = canvasRef.current.getContext("2d")
+    // ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
+    //
+    // ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
+    // ctx.fillRect(90, 40, 280, 280) //upper left box
+    // ctx.fillRect(620, 40, 280, 280) //uppper right box
+    // ctx.fillRect(90, 350, 280, 280) // lower left box
+    // ctx.fillRect(620, 350, 280, 280) //lower right box
 
 
     const backgroundSounds = document.getElementById("background-sounds");
@@ -57,24 +57,26 @@ const canvasRef = useRef()
 
   return (
     <div className="App">
-    <NavBar/>
+
+    <Drawer/>
+
+
+
     <PoseNet
       inferenceConfig={{ decodingMethod: "single-person" }}
       onEstimate={poses => {
             if (poses.length !== 0) setPosesString(poses[0].keypoints)
       }}
     />
-    <canvas
-        id="button-canvas"
-        width={window.innerWidth - 300}
-        height={window.innerHeight}
-        ref={canvasRef}
-        ></canvas>
     <audio id="background-sounds" src={backgroundSounds}></audio>
     <audio id="c-note" src={cNote}></audio>
     <audio id="g-note" src={gNote}></audio>
     <audio id="d-note" src={dNote}></audio>
     <audio id="a-note" src={aNote}></audio>
+
+
+
+
     </div>
   );
 }

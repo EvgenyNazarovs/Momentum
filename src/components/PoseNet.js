@@ -7,6 +7,9 @@ import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjace
 import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
+import '../App.css'
+import { prepareCanvas } from '../canvasutil.js'
+import cartographer from './cartographer.png'
 
 export default function PoseNet({
   style,
@@ -24,6 +27,7 @@ export default function PoseNet({
 }) {
   const videoRef = useRef()
   const canvasRef = useRef()
+  const canvasRef1 = useRef()
   const net = useLoadPoseNet(modelConfig)
   const [errorMessage, setErrorMessage] = useState()
   const onEstimateRef = useRef()
@@ -48,6 +52,11 @@ export default function PoseNet({
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
+    const ctx2 = canvasRef1.current.getContext("2d")
+    const img = new Image();
+    img.src = cartographer
+
+
     // const img = new Image(10, 10);
     // img.src = pattern
     // img.onload = function()
@@ -70,18 +79,36 @@ export default function PoseNet({
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
+        prepareCanvas(ctx2, width, height);
+        let patrn = ctx2.createPattern(img, 'repeat');
+
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
 
-        // ctx.fillRect(0, 0, 75, 75);
+        ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
+        let upperRightCircle = new Path2D();
+        let upperLeftCircle = new Path2D();
+        let lowerRightCircle = new Path2D();
+        let lowerLeftCircle = new Path2D();
 
-        // ctx.fillRect(50, 50, 178, 178)
+        upperRightCircle.arc(495, 200, 165, 0, 2 * Math.PI);
+        upperLeftCircle.arc(905, 200, 165, 0, 2 * Math.PI);
+        lowerRightCircle.arc(300, 530, 165, 0, 2 * Math.PI);
+        lowerLeftCircle.arc(1100, 530, 165, 0, 2 * Math.PI);
+        ctx2.fill(upperRightCircle)
+        ctx2.fill(upperLeftCircle)
+        ctx2.fill(lowerRightCircle)
+        ctx2.fill(lowerLeftCircle)
+
+
+        ctx2.fillStyle = patrn;
+      // ctx.fillRect(0, 0, 500, 500)
+        ctx2.fill(upperRightCircle)
+        ctx2.fill(upperLeftCircle)
+        ctx2.fill(lowerRightCircle)
+        ctx2.fill(lowerLeftCircle)
 
 
 
@@ -100,8 +127,7 @@ export default function PoseNet({
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => {
-        drawKeypoints(ctx, keypoints)
+        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx, keypoints)
 })
       } catch (err) {
         clearInterval(intervalID)
@@ -134,13 +160,21 @@ export default function PoseNet({
         width={width}
         height={height}
       />
-      <canvas id="canvas"
+      <canvas id="posenet-canvas"
         style={style}
         className={className}
         ref={canvasRef}
         width={width}
         height={height}
         onClick={e => console.log(e.clientX, e.clientY)}
+      />
+      <canvas id="canvas"
+        style={style}
+        className={className}
+        ref={canvasRef1}
+        width={width}
+        height={height}
+
       />
     </>
   )

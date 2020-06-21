@@ -44,29 +44,19 @@
   }
 }
 
-/* canvas {
+canvas {
     position:absolute;
-    left:200px;
-    top:0px;
-  } */
-
-  #button-canvas {
-    position: absolute;
-    left: 550px;
-    top: 100px;
-    /* width: inherit - 300px; */
-    /* width:  */
-    /* position: absolute; */
-    /* margin-left: auto; */
+    left:240px;
+    width:82vw;
+    height: 100vh;
   }
 
+
   video {
-    /* margin: 100px; */
-    /* position:absolute; */
-    /* margin-left: auto; */
-    /* left:200px; */
-    /* top:0px; */
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
+    position: absolute;
+    left:240px;
+    width: 82vw;
+    height: 100vh;
+
+
   }
