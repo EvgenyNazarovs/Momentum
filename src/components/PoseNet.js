@@ -8,6 +8,7 @@ import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
 import '../App.css'
+import { prepareCanvas } from '../canvasutil.js'
 
 export default function PoseNet({
   style,
@@ -74,14 +75,11 @@ export default function PoseNet({
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        ctx.fillRect(90, 40, 280, 280) //upper left box
-        ctx.fillRect(620, 40, 280, 280) //uppper right box
-        ctx.fillRect(90, 350, 280, 280) // lower left box
-        ctx.fillRect(620, 350, 280, 280) //lower right box
+        prepareCanvas(ctx2, width, height);
+        console.log('Width: ', width)
+        console.log('height: ', height)
 
-        ctx2.clearRect(0,0,window.innerWidth-300,window.innerHeight);
-            ctx2.fillStyle = 'rgba(255, 192, 283, 0.5)'
-        ctx2.fillRect(300, 300, 300, 300)
+
 
 
         // ctx.fillRect(0, 0, width, height)
@@ -155,7 +153,7 @@ export default function PoseNet({
         height={height}
         onClick={e => console.log(e.clientX, e.clientY)}
       />
-      <canvas
+      <canvas id="canvas"
         style={style}
         className={className}
         ref={canvasRef1}
