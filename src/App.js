@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PoseNet from './components/PoseNet'
-import './App.css';
 import NavBar from './components/NavBar.js'
 import backgroundSounds from './sounds/background.mp3'
 import cNote from './sounds/CNote.mp3'
@@ -40,9 +39,14 @@ const canvasRef = useRef()
     const dNote = document.getElementById("d-note");
     const aNote = document.getElementById("a-note");
 
-    const [f, s, t, frth] =
-    calculateAudioCoordinates((window.innerWidth), window.innerHeight);
+    const [f, s, t, frth] = calculateAudioCoordinates(window.innerWidth -300, window.innerHeight);
 
+    // const [f, s, t, frth] =
+    // calculateAudioCoordinates(width , height);
+    console.log("First Audio Shape: ", f);
+    console.log("Second Audio Shape: ", s);
+    console.log("Third Audio Shape: ", t);
+    console.log("Fourth Audio Shape: ", frth);
 
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {
