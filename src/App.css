@@ -44,12 +44,17 @@
 
 canvas {
     position:absolute;
-    left:200px;
-    top:0px;
+    left:240px;
+    width:82vw;
+    height: 100vh;
   }
 
+
   video {
-    position:absolute;
-    left:200px;
-    top:0px;
+    position: absolute;
+    left:240px;
+    width: 82vw;;
+    height: 100vh;
+
+
   }

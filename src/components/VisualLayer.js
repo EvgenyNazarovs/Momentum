@@ -1,24 +1,15 @@
-import React, {useState, useEffect, useRef} from 'react';
-import PoseNet from './components/PoseNet'
-import './App.css';
-import NavBar from './components/NavBar.js'
-import backgroundSounds from './sounds/background.mp3'
-import cNote from './sounds/CNote.mp3'
-import gNote from './sounds/GNote.mp3'
-import aNote from './sounds/ANote.mp3'
-import dNote from './sounds/DNote.mp3'
-import useInputImage from "./hooks/useInputImage"
-import Drawer from './components/Drawer.js'
+import React, {useEffect, useRef} from 'react';
+import backgroundSounds from '../sounds/background.mp3'
+import cNote from '../sounds/CNote.mp3'
+import gNote from '../sounds/GNote.mp3'
+import aNote from '../sounds/ANote.mp3'
+import dNote from '../sounds/DNote.mp3'
 
 
-function App() {
-  const [posesString, setPosesString] = useState([])
-
-
-const canvasRef = useRef()
+const VisualLayer = ({keypoints}) => {
+  const canvasRef = useRef()
 
   useEffect(() => {
-    if (posesString.length === 0) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
     ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
@@ -38,37 +29,28 @@ const canvasRef = useRef()
     const aNote = document.getElementById("a-note");
 
 
-  if (posesString.length !== 0) {
-      if (posesString[0].part === 'nose') {
-        const noseX = posesString[0].position.x;
-        const noseY = posesString[0].position.y
+  if (keypoints && keypoints.length !== 0) {
+      if (keypoints[0].part === 'nose') {
+        const noseX = keypoints[0].position.x;
+        const noseY = keypoints[0].position.y
 
         if (noseX > 50 && noseX < 250 && noseY > 50 && noseY < 250) {
             cNote.play()
+            console.log('playing')
         } else if (noseX > 740 && noseX < 940 && noseY > 50 && noseY < 250) {
             gNote.play()
         } else if (noseX > 50 && noseX < 250 && noseY > 450 && noseY < 650) {
             dNote.play()
         } else if (noseX > 740 && noseX < 940 && noseY > 450 && noseY < 650) {
-          aNote.play()
+            aNote.play()
         }
       }
-    }}, [posesString])
+    }}, [keypoints])
 
 
   return (
-    <div className="App">
+    <div>
 
-    <Drawer/>
-
-
-
-    <PoseNet
-      inferenceConfig={{ decodingMethod: "single-person" }}
-      onEstimate={poses => {
-            if (poses.length !== 0) setPosesString(poses[0].keypoints)
-      }}
-    />
     <audio id="background-sounds" src={backgroundSounds}></audio>
     <audio id="c-note" src={cNote}></audio>
     <audio id="g-note" src={gNote}></audio>
@@ -81,10 +63,8 @@ const canvasRef = useRef()
         height={window.innerHeight}
         ref={canvasRef}
         ></canvas>
-
-
-    </div>
-  );
+        </div>
+  )
 }
 
-export default App;
+export default VisualLayer;
