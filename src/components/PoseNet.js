@@ -76,24 +76,14 @@ export default function PoseNet({
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
         prepareCanvas(ctx2, width, height);
-        console.log('Width: ', width)
-        console.log('height: ', height)
 
 
-
-
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
 
-        // ctx.fillRect(0, 0, 75, 75);
 
-        // ctx.fillRect(50, 50, 178, 178)
 
 
 
