@@ -65,10 +65,10 @@ export default function PoseNet({
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
-        ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
+        // ctx.fillRect(0, 0, width, height)
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
@@ -86,7 +86,7 @@ export default function PoseNet({
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => drawWithAllPoints(ctx, keypoints))
+        confidentPoses.forEach(({ keypoints }) => drawKeypoints(ctx, keypoints))
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
@@ -113,6 +113,7 @@ export default function PoseNet({
       <video
         playsInline
         ref={videoRef}
+        // filter={"grayscale(100%)"}
         style={{ width: "0", height: "0" }}
         width={width}
         height={height}
