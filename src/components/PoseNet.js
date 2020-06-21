@@ -76,6 +76,7 @@ export default function PoseNet({
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
         prepareCanvas(ctx2, width, height);
+        
 
 
 

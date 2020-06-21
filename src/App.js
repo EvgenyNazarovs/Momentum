@@ -41,7 +41,7 @@ const canvasRef = useRef()
     const aNote = document.getElementById("a-note");
 
     const [f, s, t, frth] =
-    calculateAudioCoordinates(980, 674);
+    calculateAudioCoordinates((window.innerWidth), window.innerHeight);
 
 
   if (posesString.length !== 0) {
