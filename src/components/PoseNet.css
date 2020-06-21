@@ -1,10 +1,4 @@
 #canvas {
-<<<<<<< HEAD
-
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
-=======
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
@@ -19,5 +13,4 @@
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     filter: grayscale(100%);
->>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
 }
