@@ -8,7 +8,7 @@ import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
 import '../App.css'
-import { prepareCanvas } from '../canvasutil.js'
+import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
 
 export default function PoseNet({
   style,
@@ -77,7 +77,22 @@ export default function PoseNet({
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
         prepareCanvas(ctx2, width, height);
 
+        function calculateCanvasCoordinates(width, height) {
+          const [widthScale, heightScale] = calculateScale(width, height);
+          const firstShape = [90 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
+          const secondShape = [620 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
+          const thirdShape = [90 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
+          const fourthShape = [620 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
+          return [firstShape, secondShape, thirdShape, fourthShape];
+        }
 
+        const [firstShape, secondShape, thirdShape, fourthShape] = calculateCanvasCoordinates(width, height);
+        console.log("First Canvas Shape: ", firstShape);
+        console.log("Second Canvas Shape: ", secondShape);
+        console.log("Third Canvas Shape: ", thirdShape);
+        console.log("Fourth Canvas Shape: ", fourthShape);
+
+        
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
@@ -88,6 +103,8 @@ export default function PoseNet({
 
 
 
+        // let patrn = ctx.createPattern(img, 'repeat');
+        // let patrn = ctx.createPattern(img, 'repeat');
         // let patrn = ctx.createPattern(img, 'repeat');
         // ctx.fillStyle = patrn;
 
@@ -107,6 +124,8 @@ export default function PoseNet({
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
+        console.log(err.message);
+        console.log(err.message);
         console.log(err.message);
       }
       //potentially can modify the interval of scanning poses

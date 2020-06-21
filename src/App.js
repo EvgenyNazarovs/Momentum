@@ -41,8 +41,14 @@ const canvasRef = useRef()
     const aNote = document.getElementById("a-note");
 
     const [f, s, t, frth] =
-    calculateAudioCoordinates(980, 674);
+    calculateAudioCoordinates(window.innerWidth -300, window.innerHeight);
 
+    // const [f, s, t, frth] =
+    // calculateAudioCoordinates(width , height);
+    console.log("First Audio Shape: ", f);
+    console.log("Second Audio Shape: ", s);
+    console.log("Third Audio Shape: ", t);
+    console.log("Fourth Audio Shape: ", frth);
 
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {
