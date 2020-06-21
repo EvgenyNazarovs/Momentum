@@ -7,6 +7,7 @@ import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjace
 import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
+import '../App.css'
 
 export default function PoseNet({
   style,
