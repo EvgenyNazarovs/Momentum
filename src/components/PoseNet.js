@@ -25,6 +25,7 @@ export default function PoseNet({
 }) {
   const videoRef = useRef()
   const canvasRef = useRef()
+  const canvasRef1 = useRef()
   const net = useLoadPoseNet(modelConfig)
   const [errorMessage, setErrorMessage] = useState()
   const onEstimateRef = useRef()
@@ -49,6 +50,8 @@ export default function PoseNet({
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
+    const ctx2 = canvasRef1.current.getContext("2d")
+
     // const img = new Image(10, 10);
     // img.src = pattern
     // img.onload = function()
@@ -71,11 +74,16 @@ export default function PoseNet({
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-
         ctx.fillRect(90, 40, 280, 280) //upper left box
         ctx.fillRect(620, 40, 280, 280) //uppper right box
         ctx.fillRect(90, 350, 280, 280) // lower left box
         ctx.fillRect(620, 350, 280, 280) //lower right box
+
+        ctx2.clearRect(0,0,window.innerWidth-300,window.innerHeight);
+            ctx2.fillStyle = 'rgba(255, 192, 283, 0.5)'
+        ctx2.fillRect(300, 300, 300, 300)
+
+
         // ctx.fillRect(0, 0, width, height)
         // ctx.fillRect(0, 0, width, height)
         // ctx.fillRect(0, 0, width, height)
@@ -146,6 +154,14 @@ export default function PoseNet({
         width={width}
         height={height}
         onClick={e => console.log(e.clientX, e.clientY)}
+      />
+      <canvas
+        style={style}
+        className={className}
+        ref={canvasRef1}
+        width={width}
+        height={height}
+
       />
     </>
   )

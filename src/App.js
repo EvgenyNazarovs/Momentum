@@ -18,16 +18,16 @@ function App() {
 const canvasRef = useRef()
 
   useEffect(() => {
-    if (posesString.length === 0) return () => {}
-
-    const ctx = canvasRef.current.getContext("2d")
-    ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
-
-    ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
-    ctx.fillRect(90, 40, 280, 280) //upper left box
-    ctx.fillRect(620, 40, 280, 280) //uppper right box
-    ctx.fillRect(90, 350, 280, 280) // lower left box
-    ctx.fillRect(620, 350, 280, 280) //lower right box
+    // if (posesString.length === 0) return () => {}
+    //
+    // const ctx = canvasRef.current.getContext("2d")
+    // ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
+    //
+    // ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
+    // ctx.fillRect(90, 40, 280, 280) //upper left box
+    // ctx.fillRect(620, 40, 280, 280) //uppper right box
+    // ctx.fillRect(90, 350, 280, 280) // lower left box
+    // ctx.fillRect(620, 350, 280, 280) //lower right box
 
 
     const backgroundSounds = document.getElementById("background-sounds");
@@ -75,12 +75,7 @@ const canvasRef = useRef()
     <audio id="d-note" src={dNote}></audio>
     <audio id="a-note" src={aNote}></audio>
 
-    <canvas
 
-        width={window.innerWidth-300}
-        height={window.innerHeight}
-        ref={canvasRef}
-        ></canvas>
 
 
     </div>
