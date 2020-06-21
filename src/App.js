@@ -1,17 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import PoseNet from './components/PoseNet'
-import './App.css';
 import NavBar from './components/NavBar.js'
 import backgroundSounds from './sounds/background.mp3'
 import cNote from './sounds/CNote.mp3'
 import gNote from './sounds/GNote.mp3'
 import aNote from './sounds/ANote.mp3'
 import dNote from './sounds/DNote.mp3'
+import useInputImage from "./hooks/useInputImage"
+import { Drawer } from '@material-ui/core';
+import './App.css';
+
 
 function App() {
   const [posesString, setPosesString] = useState([])
 
+
+const canvasRef = useRef()
+
   useEffect(() => {
+
+    const ctx = canvasRef.current.getContext("2d")
+    ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
+
+    ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
+    ctx.fillRect(90, 40, 280, 280) //upper left box
+    ctx.fillRect(620, 40, 280, 280) //uppper right box
+    ctx.fillRect(90, 350, 280, 280) // lower left box
+    ctx.fillRect(620, 350, 280, 280) //lower right box
+
+
     const backgroundSounds = document.getElementById("background-sounds");
     backgroundSounds.play()
     const cNote = document.getElementById("c-note");
@@ -19,17 +36,20 @@ function App() {
     const dNote = document.getElementById("d-note");
     const aNote = document.getElementById("a-note");
 
+
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {
-        let noseX = posesString[0].position.x;
-        let noseY = posesString[0].position.y
+        const noseX = posesString[0].position.x;
+        const noseY = posesString[0].position.y
 
         if (noseX > 50 && noseX < 250 && noseY > 50 && noseY < 250) {
-          console.log('youre in the frame')
-          cNote.play()
-        } else {
-          console.log('now youre not.');
-          gNote.play()
+            cNote.play()
+        } else if (noseX > 740 && noseX < 940 && noseY > 50 && noseY < 250) {
+            gNote.play()
+        } else if (noseX > 50 && noseX < 250 && noseY > 450 && noseY < 650) {
+            dNote.play()
+        } else if (noseX > 740 && noseX < 940 && noseY > 450 && noseY < 650) {
+          aNote.play()
         }
       }
     }}, [posesString])
@@ -37,18 +57,24 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar/>
-      <PoseNet
-        inferenceConfig={{ decodingMethod: "single-person" }}
-        onEstimate={poses => {
-              if (poses.length !== 0) setPosesString(poses[0].keypoints)
-        }}
-      />
-      <audio id="background-sounds" src={backgroundSounds}></audio>
-      <audio id="c-note" src={cNote}></audio>
-      <audio id="g-note" src={gNote}></audio>
-      <audio id="d-note" src={dNote}></audio>
-      <audio id="a-note" src={aNote}></audio>
+    <NavBar/>
+    <PoseNet
+      inferenceConfig={{ decodingMethod: "single-person" }}
+      onEstimate={poses => {
+            if (poses.length !== 0) setPosesString(poses[0].keypoints)
+      }}
+    />
+    <canvas
+        id="button-canvas"
+        width={window.innerWidth - 300}
+        height={window.innerHeight}
+        ref={canvasRef}
+        ></canvas>
+    <audio id="background-sounds" src={backgroundSounds}></audio>
+    <audio id="c-note" src={cNote}></audio>
+    <audio id="g-note" src={gNote}></audio>
+    <audio id="d-note" src={dNote}></audio>
+    <audio id="a-note" src={aNote}></audio>
     </div>
   );
 }

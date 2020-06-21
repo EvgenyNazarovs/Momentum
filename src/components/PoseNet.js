@@ -3,9 +3,10 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithAllPoints, drawWithNose } from "../util"
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
 import pattern from './Texture5.png'
 import './PoseNet.css'
+import texture1 from '../assets/Texture1.png'
 
 export default function PoseNet({
   style,
@@ -47,8 +48,8 @@ export default function PoseNet({
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
-    const img = new Image(10, 10);
-    img.src = pattern
+    // const img = new Image(10, 10);
+    // img.src = pattern
     // img.onload = function()
 
     const intervalID = setInterval(async () => {
@@ -56,11 +57,15 @@ export default function PoseNet({
         // collects poses based on the image from stream
         const poses = await net.estimatePoses(image, inferenceConfigRef.current)
         // takes poses that meet confidence criteria determined below
+
+
         const confidentPoses = getConfidentPoses(
           poses,
           minPoseConfidence,
           minPartConfidence
         )
+
+
 
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
@@ -73,23 +78,35 @@ export default function PoseNet({
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
-        ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
+
         // ctx.fillRect(0, 0, 75, 75);
 
-        ctx.fillRect(50, 50, 178, 178)
+        // ctx.fillRect(50, 50, 178, 178)
 
 
 
-        let patrn = ctx.createPattern(img, 'repeat');
-        ctx.fillStyle = patrn;
-        ctx.fillRect(50, 50, 200, 200)
+
+        // let patrn = ctx.createPattern(img, 'repeat');
+        // ctx.fillStyle = patrn;
+
+        // ctx.fillRect(90, 40, 280, 280) //upper left box
+
+
+        // ctx.fillRect(620, 40, 280, 280) //uppper right box
+
+
+
+        // ctx.fillRect()
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => drawKeypoints(ctx, keypoints))
+        confidentPoses.forEach(({ keypoints }) => {
+        drawKeypoints(ctx, keypoints)
+})
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
+        console.log(err.message);
       }
       //potentially can modify the interval of scanning poses
     }, Math.round(1000 / frameRate))
@@ -113,7 +130,6 @@ export default function PoseNet({
       <video
         playsInline
         ref={videoRef}
-        // filter={"grayscale(100%)"}
         style={{ width: "0", height: "0" }}
         width={width}
         height={height}
@@ -124,6 +140,7 @@ export default function PoseNet({
         ref={canvasRef}
         width={width}
         height={height}
+        onClick={e => console.log(e.clientX, e.clientY)}
       />
     </>
   )
@@ -188,7 +205,7 @@ PoseNet.defaultProps = {
   style: {},
   className: "",
   facingMode: "user",
-  frameRate: 20,
+  frameRate: 15,
   input: undefined,
   onEstimate: () => {},
   inferenceConfig: {},
