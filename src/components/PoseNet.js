@@ -8,7 +8,12 @@ import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
 import '../App.css'
+<<<<<<< HEAD
 import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
+=======
+import { prepareCanvas } from '../canvasutil.js'
+import cartographer from './cartographer.png'
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
 
 export default function PoseNet({
   style,
@@ -52,6 +57,12 @@ export default function PoseNet({
 
     const ctx = canvasRef.current.getContext("2d")
     const ctx2 = canvasRef1.current.getContext("2d")
+<<<<<<< HEAD
+=======
+    const img = new Image();
+    img.src = cartographer
+
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
 
     // const img = new Image(10, 10);
     // img.src = pattern
@@ -76,6 +87,7 @@ export default function PoseNet({
         ctx.drawImage(image, 0, 0, width, height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
         prepareCanvas(ctx2, width, height);
+<<<<<<< HEAD
 
         function calculateCanvasCoordinates(width, height) {
           const [widthScale, heightScale] = calculateScale(width, height);
@@ -93,15 +105,51 @@ export default function PoseNet({
         console.log("Fourth Canvas Shape: ", fourthShape);
 
         
+=======
+        let patrn = ctx2.createPattern(img, 'repeat');
+
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
 
+<<<<<<< HEAD
+=======
+        ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
+        let upperRightCircle = new Path2D();
+        let upperLeftCircle = new Path2D();
+        let lowerRightCircle = new Path2D();
+        let lowerLeftCircle = new Path2D();
+
+        upperRightCircle.arc(495, 200, 165, 0, 2 * Math.PI);
+        upperLeftCircle.arc(905, 200, 165, 0, 2 * Math.PI);
+        lowerRightCircle.arc(300, 530, 165, 0, 2 * Math.PI);
+        lowerLeftCircle.arc(1100, 530, 165, 0, 2 * Math.PI);
+        ctx2.fill(upperRightCircle)
+        ctx2.fill(upperLeftCircle)
+        ctx2.fill(lowerRightCircle)
+        ctx2.fill(lowerLeftCircle)
+
+
+        ctx2.fillStyle = patrn;
+      // ctx.fillRect(0, 0, 500, 500)
+        ctx2.fill(upperRightCircle)
+        ctx2.fill(upperLeftCircle)
+        ctx2.fill(lowerRightCircle)
+        ctx2.fill(lowerLeftCircle)
 
 
 
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
 
+        // let patrn = ctx.createPattern(img, 'repeat');
+        // ctx.fillStyle = patrn;
+
+        // ctx.fillRect(90, 40, 280, 280) //upper left box
+
+
+<<<<<<< HEAD
 
         // let patrn = ctx.createPattern(img, 'repeat');
         // let patrn = ctx.createPattern(img, 'repeat');
@@ -111,6 +159,8 @@ export default function PoseNet({
         // ctx.fillRect(90, 40, 280, 280) //upper left box
 
 
+=======
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
         // ctx.fillRect(620, 40, 280, 280) //uppper right box
 
 
@@ -125,8 +175,11 @@ export default function PoseNet({
         clearInterval(intervalID)
         setErrorMessage(err.message)
         console.log(err.message);
+<<<<<<< HEAD
         console.log(err.message);
         console.log(err.message);
+=======
+>>>>>>> 1ceee64dfece02a3ec4826bdb0b5a37e3b717888
       }
       //potentially can modify the interval of scanning poses
     }, Math.round(1000 / frameRate))
@@ -154,7 +207,7 @@ export default function PoseNet({
         width={width}
         height={height}
       />
-      <canvas id="canvas"
+      <canvas id="posenet-canvas"
         style={style}
         className={className}
         ref={canvasRef}

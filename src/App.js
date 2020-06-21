@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PoseNet from './components/PoseNet'
-import './App.css';
 import NavBar from './components/NavBar.js'
 import backgroundSounds from './sounds/background.mp3'
 import cNote from './sounds/CNote.mp3'
