@@ -9,6 +9,7 @@ import aNote from './sounds/ANote.mp3'
 import dNote from './sounds/DNote.mp3'
 import useInputImage from "./hooks/useInputImage"
 import Drawer from './components/Drawer.js'
+import { calculateAudioCoordinates } from './canvasutil.js'
 
 
 function App() {
@@ -29,6 +30,8 @@ const canvasRef = useRef()
     // ctx.fillRect(90, 350, 280, 280) // lower left box
     // ctx.fillRect(620, 350, 280, 280) //lower right box
 
+    if (posesString.length === 0) return () => {}
+
 
     const backgroundSounds = document.getElementById("background-sounds");
     backgroundSounds.play()
@@ -37,20 +40,27 @@ const canvasRef = useRef()
     const dNote = document.getElementById("d-note");
     const aNote = document.getElementById("a-note");
 
+    const [f, s, t, frth] =
+    calculateAudioCoordinates(980, 674);
+
 
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {
         const noseX = posesString[0].position.x;
         const noseY = posesString[0].position.y
 
-        if (noseX > 50 && noseX < 250 && noseY > 50 && noseY < 250) {
+        if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
             cNote.play()
-        } else if (noseX > 740 && noseX < 940 && noseY > 50 && noseY < 250) {
+            console.log('upper right corner');
+        } else if (noseX > s.lowX && noseX < s.highX && noseY > s.lowY && noseY < s.highY) {
             gNote.play()
-        } else if (noseX > 50 && noseX < 250 && noseY > 450 && noseY < 650) {
+            console.log('upper left corner');
+        } else if (noseX > t.lowX && noseX < t.highX && noseY > t.lowY && noseY < t.highY) {
             dNote.play()
-        } else if (noseX > 740 && noseX < 940 && noseY > 450 && noseY < 650) {
+            console.log('lower right corner');
+        } else if (noseX > frth.lowX && noseX < frth.highX && noseY > frth.lowY && noseY < frth.highY) {
           aNote.play()
+          console.log('lower left corner');
         }
       }
     }}, [posesString])
