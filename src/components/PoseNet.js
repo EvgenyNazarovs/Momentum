@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose } from "../util"
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
 import pattern from './Texture5.png'
 import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
@@ -57,11 +57,15 @@ export default function PoseNet({
         // collects poses based on the image from stream
         const poses = await net.estimatePoses(image, inferenceConfigRef.current)
         // takes poses that meet confidence criteria determined below
+
+
         const confidentPoses = getConfidentPoses(
           poses,
           minPoseConfidence,
           minPartConfidence
         )
+
+
 
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
@@ -84,23 +88,26 @@ export default function PoseNet({
 
         // let patrn = ctx.createPattern(img, 'repeat');
         // ctx.fillStyle = patrn;
-          ctx.fillStyle = 'rgba(255, 192, 283, 0.5)';
-        ctx.fillRect(90, 40, 280, 280) //upper left box
 
-          ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
-        ctx.fillRect(620, 40, 280, 280) //uppper right box
+        // ctx.fillRect(90, 40, 280, 280) //upper left box
 
 
-        ctx.fillRect(90, 350, 280, 280) // lower left box
-        ctx.fillRect(620, 350, 280, 280) //lower right box
+        // ctx.fillRect(620, 40, 280, 280) //uppper right box
+
+
+
         // ctx.fillRect()
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => drawKeypoints(ctx, keypoints))
+        confidentPoses.forEach(({ keypoints }) => {
+          const adjacentKeyPoints = getAdjacentKeyPoints(keypoints)
+          console.log(adjacentKeyPoints)
+})
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
+        console.log(err.message);
       }
       //potentially can modify the interval of scanning poses
     }, Math.round(1000 / frameRate))

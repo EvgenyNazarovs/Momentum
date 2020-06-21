@@ -15,14 +15,18 @@ function App() {
   const [posesString, setPosesString] = useState([])
 
 
-const canvasRef = useRef(null)
+const canvasRef = useRef()
 
   useEffect(() => {
 
-      const canvas = canvasRef.current
-      const ctx2 = canvas.getContext('2d')
-      ctx2.fillStyle = 'green'
-        ctx2.fillRect(150, 40, 280, 280)
+    const ctx = canvasRef.current.getContext("2d")
+    ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
+
+    ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
+    ctx.fillRect(90, 40, 280, 280) //upper left box
+    ctx.fillRect(620, 40, 280, 280) //uppper right box
+    ctx.fillRect(90, 350, 280, 280) // lower left box
+    ctx.fillRect(620, 350, 280, 280) //lower right box
 
 
     const backgroundSounds = document.getElementById("background-sounds");
