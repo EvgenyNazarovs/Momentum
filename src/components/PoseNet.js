@@ -9,7 +9,8 @@ import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
 import cartographer from './cartographer.png'
 import '../App.css'
-import { prepareCanvas, calculateAudioCoordinates, calculateScale, prepareCanvasCircles } from '../canvasutil.js'
+import { prepareCanvas, calculateAudioCoordinates, calculateScale, prepareCanvasWithSquares } from '../canvasutil.js'
+import { prepareCanvasCircles } from '../circleFunctions.js'
 
 export default function PoseNet({
   style,
@@ -43,6 +44,12 @@ export default function PoseNet({
     frameRate
   })
 
+  const circleCoordinates = [
+      [ 330, 160, 120 ],
+      [ 680, 160, 120 ],
+      [ 220, 420, 120 ],
+      [ 790, 420, 120 ]
+  ]
 
 
 
@@ -78,23 +85,11 @@ export default function PoseNet({
 
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
+        console.log('Posenet Heigt: ', height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        prepareCanvas(ctx2, width, height);
 
-        function calculateCanvasCoordinates(width, height) {
-          const [widthScale, heightScale] = calculateScale(width, height);
-          const firstShape = [90 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
-          const secondShape = [620 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
-          const thirdShape = [90 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
-          const fourthShape = [620 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
-          return [firstShape, secondShape, thirdShape, fourthShape];
-        }
 
-        const [firstShape, secondShape, thirdShape, fourthShape] = calculateCanvasCoordinates(width, height);
-        console.log("First Canvas Shape: ", firstShape);
-        console.log("Second Canvas Shape: ", secondShape);
-        console.log("Third Canvas Shape: ", thirdShape);
-        console.log("Fourth Canvas Shape: ", fourthShape);
+
 
 
 
@@ -104,11 +99,12 @@ export default function PoseNet({
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
+        // const squareColour = 'rgba(255, 192, 283, 0.5)'
 
-        prepareCanvasCircles(img, ctx2, width, height);
 
 
-      //   ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
+        const circleColour = 'rgba(201, 152, 36, 0.9)'
+      prepareCanvasCircles(img, ctx2, width, height, circleCoordinates, circleColour);
       //   let upperRightCircle = new Path2D();
       //   let upperLeftCircle = new Path2D();
       //   let lowerRightCircle = new Path2D();
@@ -181,7 +177,7 @@ export default function PoseNet({
         width={width}
         height={height}
       />
-      <canvas id="posenet-canvas"
+      <canvas
         style={style}
         className={className}
         ref={canvasRef}
@@ -189,7 +185,7 @@ export default function PoseNet({
         height={height}
         onClick={e => console.log(e.clientX, e.clientY)}
       />
-      <canvas id="canvas"
+      <canvas
         style={style}
         className={className}
         ref={canvasRef1}

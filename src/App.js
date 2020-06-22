@@ -9,6 +9,14 @@ import dNote from './sounds/DNote.mp3'
 import useInputImage from "./hooks/useInputImage"
 import Drawer from './components/Drawer.js'
 import { calculateAudioCoordinates } from './canvasutil.js'
+import { calculateDistance } from './circleFunctions.js'
+
+const circleCoordinates = [
+    [ 330, 160, 120 ],
+    [ 680, 160, 120 ],
+    [ 220, 420, 120 ],
+    [ 790, 420, 120 ]
+]
 
 
 function App() {
@@ -18,8 +26,7 @@ function App() {
 const canvasRef = useRef()
 
   useEffect(() => {
-    // if (posesString.length === 0) return () => {}
-    //
+
     // const ctx = canvasRef.current.getContext("2d")
     // ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
     //
@@ -39,33 +46,38 @@ const canvasRef = useRef()
     const dNote = document.getElementById("d-note");
     const aNote = document.getElementById("a-note");
 
-    const [f, s, t, frth] = calculateAudioCoordinates(window.innerWidth -300, window.innerHeight);
-
-    // const [f, s, t, frth] =
-    // calculateAudioCoordinates(width , height);
-    console.log("First Audio Shape: ", f);
-    console.log("Second Audio Shape: ", s);
-    console.log("Third Audio Shape: ", t);
-    console.log("Fourth Audio Shape: ", frth);
+    // const [f, s, t, frth] = calculateAudioCoordinates(window.innerWidth-300, 674, squareCoordinates);
+    // // console.log("First Audio Shape: ", f);
+    // // console.log("Second Audio Shape: ", s);
+    // // console.log("Third Audio Shape: ", t);
+    // // console.log("Fourth Audio Shape: ", frth);
 
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {
         const noseX = posesString[0].position.x;
         const noseY = posesString[0].position.y
 
-        if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
-            cNote.play()
-            console.log('upper right corner');
-        } else if (noseX > s.lowX && noseX < s.highX && noseY > s.lowY && noseY < s.highY) {
-            gNote.play()
-            console.log('upper left corner');
-        } else if (noseX > t.lowX && noseX < t.highX && noseY > t.lowY && noseY < t.highY) {
-            dNote.play()
-            console.log('lower right corner');
-        } else if (noseX > frth.lowX && noseX < frth.highX && noseY > frth.lowY && noseY < frth.highY) {
-          aNote.play()
-          console.log('lower left corner');
-        }
+        // monitorCircleDistance(circleCoordinates, posesString[0].position)
+
+        circleCoordinates.forEach(([cX, cY, cR], index) => {
+          const dist = calculateDistance([cX, cY], noseX, noseY);
+          if (dist < cR) cNote.play();
+          console.log(`Circle ${index}`);
+        })
+
+        // if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
+        //     cNote.play()
+        //     console.log('upper right corner');
+        // } else if (noseX > s.lowX && noseX < s.highX && noseY > s.lowY && noseY < s.highY) {
+        //     gNote.play()
+        //     console.log('upper left corner');
+        // } else if (noseX > t.lowX && noseX < t.highX && noseY > t.lowY && noseY < t.highY) {
+        //     dNote.play()
+        //     console.log('lower right corner');
+        // } else if (noseX > frth.lowX && noseX < frth.highX && noseY > frth.lowY && noseY < frth.highY) {
+        //   aNote.play()
+        //   console.log('lower left corner');
+        // }
       }
     }}, [posesString])
 

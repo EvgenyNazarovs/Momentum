@@ -8,7 +8,7 @@ function calculateScale(width, height) {
   }
 }
 
-function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) {
+export function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) {
   const [widthScale, heightScale] = calculateScale(width, height);
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = style
@@ -20,7 +20,7 @@ function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) 
 
 
 
-function calculateAudioCoordinates(width, height, squareCoordinates) {
+export function calculateAudioCoordinates(width, height, squareCoordinates) {
   const [widthScale, heightScale] = calculateScale(width, height)
 
   const audioCoordinates = squareCoordinates.map(([s1, s2, s3, s4]) => {
@@ -141,6 +141,7 @@ function prepareCanvasCircles(img, ctx, width, height, circleCoordinates, colour
     ctx.fillStyle = patrn;
     ctx.fill(newCircle);
   })
+}
 
 
 function calculateRadiusRatio(x, y, xScale, yScale) {
@@ -152,39 +153,40 @@ function calculateRadiusRatio(x, y, xScale, yScale) {
   return newDistance / initialDistance;
 }
 
-function calculateDistance({circleX, circleY}, noseX, noseY) {
+function calculateDistance([circleX, circleY], noseX, noseY) {
   const dX = circleX - noseX;
   const dY = circleY - noseY;
-  const dist = Math.sqrt((dX*dX) + (dY*dY));
-  return dist;
+  return Math.sqrt((dX*dX) + (dY*dY));
 }
+
+
 
 function calculateAudioCoordinatesForCircles(width, height, circleCoordinates) {
   const [xScale, yScale] = calculateScale(width, height);
   const [x, y] = circleCoordinates[0]
   const rScale = calculateRadiusRatio(x, y, xScale, yScale);
 
-  
 
 
 
-}
-
-
-
-function calculateDistance() {
-  const firstCircle = {
-    x: 495,
-    y: 200,
-    r: 165
-  }
-
-  const nose = { x, y }
-
-  const dX = firstCircle.x - nose.x;
-  const dY = firstCircle.y - nose.y;
-  const dist = Math.sqrt((dX*dX) + (dY*dY));
-
-  if (dist < firstCircle.r) return 'you crossed the circle';
 
 }
+
+
+//
+// function calculateDistance() {
+//   const firstCircle = {
+//     x: 495,
+//     y: 200,
+//     r: 165
+//   }
+//
+//   const nose = { x, y }
+//
+//   const dX = firstCircle.x - nose.x;
+//   const dY = firstCircle.y - nose.y;
+//   const dist = Math.sqrt((dX*dX) + (dY*dY));
+//
+//   if (dist < firstCircle.r) return 'you crossed the circle';
+//
+// }
