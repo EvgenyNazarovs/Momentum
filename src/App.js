@@ -1,12 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
-import PoseNet from './components/PoseNet'
-import NavBar from './components/NavBar.js'
-import backgroundSounds from './sounds/background.mp3'
-import cNote from './sounds/CNote.mp3'
-import gNote from './sounds/GNote.mp3'
-import aNote from './sounds/ANote.mp3'
-import dNote from './sounds/DNote.mp3'
-import useInputImage from "./hooks/useInputImage"
+
 import Drawer from './components/Drawer.js'
 import { calculateAudioCoordinates } from './canvasutil.js'
 import { calculateDistance } from './circleFunctions.js'

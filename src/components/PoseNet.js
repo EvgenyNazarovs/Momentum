@@ -103,8 +103,8 @@ export default function PoseNet({
 
 
 
-        const circleColour = 'rgba(201, 152, 36, 0.9)'
-      prepareCanvasCircles(img, ctx2, width, height, circleCoordinates, circleColour);
+      //   const circleColour = 'rgba(201, 152, 36, 0.9)'
+      // prepareCanvasCircles(img, ctx2, width, height, circleCoordinates, circleColour);
       //   let upperRightCircle = new Path2D();
       //   let upperLeftCircle = new Path2D();
       //   let lowerRightCircle = new Path2D();
