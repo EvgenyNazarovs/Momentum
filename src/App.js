@@ -72,7 +72,7 @@ const canvasRef = useRef()
   return (
     <div className="App">
 
-    <Drawer/>
+    <NavBar/>
 
 
 
