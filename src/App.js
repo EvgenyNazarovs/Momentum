@@ -1,5 +1,3 @@
-
-import Drawer from './components/Drawer.js'
 import { calculateAudioCoordinates } from './canvasutil.js'
 import { calculateDistance } from './circleFunctions.js'
 
