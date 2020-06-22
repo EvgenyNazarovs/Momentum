@@ -7,7 +7,6 @@ import NavBar from './components/NavBar'
 // import aNote from './sounds/ANote.mp3'
 // import dNote from './sounds/DNote.mp3'
 // import useInputImage from './hooks/useInputImage'
-import Drawer from './components/Drawer.js'
 import Canvas from './components/Canvas.js'
 
 function App(
@@ -29,7 +28,7 @@ function App(
 
   return (
     <div className="App">
-      <Drawer/>
+      <NavBar/>
       <PoseNet
         inferenceConfig={{ decodingMethod: "single-person" }}
         onEstimate={poses => {
