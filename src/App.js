@@ -44,10 +44,8 @@ const canvasRef = useRef()
 
     // const [f, s, t, frth] =
     // calculateAudioCoordinates(width , height);
-    console.log("First Audio Shape: ", f);
-    console.log("Second Audio Shape: ", s);
-    console.log("Third Audio Shape: ", t);
-    console.log("Fourth Audio Shape: ", frth);
+    console.log("App innerWidth: ", window.innerWidth);
+    console.log("App innerHeight: ", window.innerHeight);
 
   if (posesString.length !== 0) {
       if (posesString[0].part === 'nose') {

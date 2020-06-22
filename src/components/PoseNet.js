@@ -92,16 +92,15 @@ export default function PoseNet({
         }
 
         const [firstShape, secondShape, thirdShape, fourthShape] = calculateCanvasCoordinates(width, height);
-        console.log("First Canvas Shape: ", firstShape);
-        console.log("Second Canvas Shape: ", secondShape);
-        console.log("Third Canvas Shape: ", thirdShape);
-        console.log("Fourth Canvas Shape: ", fourthShape);
+
+        console.log("PoseNet innerWidth: ", window.innerWidth);
+        console.log("PoseNet innerHeight: ", window.innerHeight);
 
         let patrn = ctx2.createPattern(img, 'repeat');
 
 
         // we can set up our shapes and visuals here.
-        ctx.globalAlpha = 0.9
+        ctx.globalAlpha = 0.90
 
 
         ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
