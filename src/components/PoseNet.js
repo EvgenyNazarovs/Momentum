@@ -9,7 +9,7 @@ import './PoseNet.css'
 import texture1 from '../assets/Texture1.png'
 import cartographer from './cartographer.png'
 import '../App.css'
-import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
+import { prepareCanvas, calculateAudioCoordinates, calculateScale, prepareCanvasCircles } from '../canvasutil.js'
 
 export default function PoseNet({
   style,
@@ -98,36 +98,38 @@ export default function PoseNet({
 
 
 
-        let patrn = ctx2.createPattern(img, 'repeat');
+        // let patrn = ctx2.createPattern(img, 'repeat');
 
 
 
         // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
 
-
-        ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
-        let upperRightCircle = new Path2D();
-        let upperLeftCircle = new Path2D();
-        let lowerRightCircle = new Path2D();
-        let lowerLeftCircle = new Path2D();
-
-        upperRightCircle.arc(495, 200, 165, 0, 2 * Math.PI);
-        upperLeftCircle.arc(905, 200, 165, 0, 2 * Math.PI);
-        lowerRightCircle.arc(300, 530, 165, 0, 2 * Math.PI);
-        lowerLeftCircle.arc(1100, 530, 165, 0, 2 * Math.PI);
-        ctx2.fill(upperRightCircle)
-        ctx2.fill(upperLeftCircle)
-        ctx2.fill(lowerRightCircle)
-        ctx2.fill(lowerLeftCircle)
+        prepareCanvasCircles(img, ctx2, width, height);
 
 
-        ctx2.fillStyle = patrn;
-      // ctx.fillRect(0, 0, 500, 500)
-        ctx2.fill(upperRightCircle)
-        ctx2.fill(upperLeftCircle)
-        ctx2.fill(lowerRightCircle)
-        ctx2.fill(lowerLeftCircle)
+      //   ctx2.fillStyle = 'rgba(201, 152, 36, 0.9)'
+      //   let upperRightCircle = new Path2D();
+      //   let upperLeftCircle = new Path2D();
+      //   let lowerRightCircle = new Path2D();
+      //   let lowerLeftCircle = new Path2D();
+      //
+      //   upperRightCircle.arc(495, 200, 165, 0, 2 * Math.PI);
+      //   upperLeftCircle.arc(905, 200, 165, 0, 2 * Math.PI);
+      //   lowerRightCircle.arc(300, 530, 165, 0, 2 * Math.PI);
+      //   lowerLeftCircle.arc(1100, 530, 165, 0, 2 * Math.PI);
+      //   ctx2.fill(upperRightCircle)
+      //   ctx2.fill(upperLeftCircle)
+      //   ctx2.fill(lowerRightCircle)
+      //   ctx2.fill(lowerLeftCircle)
+      //
+      //
+      //   ctx2.fillStyle = patrn;
+      // // ctx.fillRect(0, 0, 500, 500)
+      //   ctx2.fill(upperRightCircle)
+      //   ctx2.fill(upperLeftCircle)
+      //   ctx2.fill(lowerRightCircle)
+      //   ctx2.fill(lowerLeftCircle)
 
 
 
