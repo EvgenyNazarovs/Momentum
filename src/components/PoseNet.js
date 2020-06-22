@@ -177,6 +177,7 @@ export default function PoseNet({
         height={height}
       />
       <canvas
+        id="posenet-canvas"
         style={style}
         className={className}
         ref={canvasRef}
@@ -185,6 +186,7 @@ export default function PoseNet({
         onClick={e => console.log(e.clientX, e.clientY)}
       />
       <canvas
+        id="posenet-canvas"
         style={style}
         className={className}
         ref={canvasRef1}
