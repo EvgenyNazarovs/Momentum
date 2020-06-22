@@ -1,4 +1,5 @@
 import { calculateScale } from './canvas.js'
+import cartographer from '../components/cartographer.png'
 
 const circleCoordinates = [
     [ 330, 160, 120 ],
@@ -7,23 +8,109 @@ const circleCoordinates = [
     [ 790, 420, 120 ]
 ]
 
-export function prepareCanvasCircles(img, ctx, [xScale, yScale, rScale], circleCoordinates, colour) {
-  console.log('XScale: ', xScale);
-  console.log('YScale: ', yScale);
-  console.log('RScale: ', rScale);
-
-  const patrn = ctx.createPattern(img, 'repeat');
 
 
-  circleCoordinates.forEach(([x, y, r]) => {
-    ctx.fillStyle = colour;
-    const newCircle = new Path2D();
-    newCircle.arc(x, y, r, 0, 2 * Math.PI)
-    ctx.fill(newCircle);
-    ctx.fillStyle = patrn;
-    ctx.fill(newCircle);
-  })
-}
+export function draw(ctx, bodyPart, circleCoordinates) {
+
+  const {x: bodyX, y: bodyY} = bodyPart.position;
+  let maxRadius = circleCoordinates[0][2] + 30
+
+  function Circle(x, y, r) {
+    const circleX = x;
+    const circleY = y;
+    let circleRadius = r;
+    const minRadius = circleRadius;
+
+    this.draw = function() {
+      const img = new Image();
+      img.src = cartographer;
+      ctx.beginPath();
+      ctx.arc( circleX, circleY, circleRadius, 0, Math.PI * 2, false)
+      ctx.strokeStyle = 'rgba(0, 0, 255, 0.3)'
+      ctx.fillStyle = 'rgba(0, 0, 255, 0.3)'
+      // ctx.fillStyle = this.color;
+      ctx.fill();
+      let patrn = ctx.createPattern(img, 'repeat');
+      ctx.fillStyle = patrn;
+      ctx.fill()
+    }
+
+    this.update = function() {
+        if (bodyX - circleX < minRadius && bodyX - circleX > - minRadius && bodyY - circleY < minRadius && bodyY - circleY > - minRadius) {
+          if (circleRadius < maxRadius) {
+            circleRadius += 4;
+          }
+        } else if (circleRadius > minRadius) {
+            circleRadius -= 1;
+        }
+
+        this.draw();
+      }
+    }
+
+    let circleArray = [];
+
+    function init() {
+      circleArray = [];
+      circleCoordinates.forEach(([x, y, r]) => {
+        circleArray.push(new Circle(x, y ,r))
+      })
+    }
+
+    init();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+      for (let i = 0; i < circleArray.length; i++) {
+        circleArray[i].update();
+      }
+    }
+
+    animate();
+  }
+
+
+// export function prepareCanvasCircles(img, ctx, [xScale, yScale, rScale], circleCoordinates, colour) {
+//   console.log('XScale: ', xScale);
+//   console.log('YScale: ', yScale);
+//   console.log('RScale: ', rScale);
+//
+//   // draw();
+//
+//   // const patrn = ctx.createPattern(img, 'repeat');
+//
+//
+//   // let minRadius = (circleCoordinates[0][2] * rScale)
+//
+//   // function draw() {
+//   //   const img = new Image();
+//   //   img.src = cartographer;
+//   //   ctx.beginPath();
+//   //   ctx.arc( this.x, this.y, this.radius, 0, Math.PI * 2, false)
+//   //   ctx.strokeStyle = 'rgba(0, 0, 255, 0.3)'
+//   //   ctx.fillStyle = 'rgba(0, 0, 255, 0.3)'
+//   //   // ctx.fillStyle = this.color;
+//   //   ctx.fill();
+//   //   let patrn = ctx.createPattern(img, 'repeat');
+//   //   ctx.fillStyle = patrn;
+//   //   ctx.fill()
+//   // }
+//
+//   // circleCoordinates.forEach(([x, y, r]) => {
+//   //   // ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+//   //   const image = new Image();
+//   //   image.src = cartographer;
+//   //   ctx.fillStyle = colour;
+//   //   const newCircle = new Path2D();
+//   //   newCircle.arc(x * xScale, y * yScale, r * rScale, 0, 2 * Math.PI)
+//   //   ctx.fill(newCircle);
+//   //   let pattern = ctx.createPattern(image, 'repeat');
+//   //   ctx.fillStyle = pattern;
+//   //   ctx.fill();
+//   // })
+// }
 
 export function calculateDistance([circleX, circleY], noseX, noseY) {
   const dX = circleX - noseX;
