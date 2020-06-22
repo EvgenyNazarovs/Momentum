@@ -4,9 +4,7 @@ import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
 import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
-import pattern from './Texture5.png'
 import './PoseNet.css'
-import texture1 from '../assets/Texture1.png'
 import '../App.css'
 import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
 import cartographer from './cartographer.png'
