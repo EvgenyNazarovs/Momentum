@@ -51,11 +51,7 @@ const canvasRef = useRef()
 
         // monitorCircleDistance(circleCoordinates, posesString[0].position)
 
-        circleCoordinates.forEach(([cX, cY, cR], index) => {
-          const dist = calculateDistance([cX, cY], noseX, noseY);
-          if (dist < cR) cNote.play();
-          console.log(`Circle ${index}`);
-        })
+      
 
         // if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
         //     cNote.play()

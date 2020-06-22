@@ -1,5 +1,12 @@
 import { calculateScale } from './canvas.js'
 
+const circleCoordinates = [
+    [ 330, 160, 120 ],
+    [ 680, 160, 120 ],
+    [ 220, 420, 120 ],
+    [ 790, 420, 120 ]
+]
+
 export function prepareCanvasCircles(img, ctx, [xScale, yScale, rScale], circleCoordinates, colour) {
   console.log('XScale: ', xScale);
   console.log('YScale: ', yScale);
@@ -38,7 +45,10 @@ export function trackCircles(circleCoordinates, notes, bodyPart) {
 
   circleCoordinates.forEach(([cX, cY, cR], index) => {
     const dist = calculateDistance([cX, cY], partX, partY);
-    if (dist < cR) notes[index].play();
+    if (dist < cR) {
+      notes[index].play();
+      //insert animation
+    }
   })
 }
 
