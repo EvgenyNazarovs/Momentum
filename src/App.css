@@ -121,7 +121,9 @@
   left: 280px;
   top: 49%;
   right: 10%;
+  transition: 0.5s;
 }
+
 .landingPage-button:hover {
 	background-color:#d64d59;
 }
