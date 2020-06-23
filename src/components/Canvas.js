@@ -4,6 +4,11 @@ import cNote from '../sounds/CNote.mp3'
 import gNote from '../sounds/GNote.mp3'
 import aNote from '../sounds/ANote.mp3'
 import dNote from '../sounds/DNote.mp3'
+import backgroundnew from '../sounds/backgroundnew.mp3'
+import jingleC from '../sounds/jingleC.mp3'
+import jingleF from '../sounds/jingleF.mp3'
+import jingleG from '../sounds/jingleG.mp3'
+import jingleC2 from '../sounds/jingleC2.mp3'
 import { prepareCanvasWithSquares, calculateAudioCoordinates, trackSquares } from '../utils/squares.js'
 import { prepareCanvasCircles, calculateDistance, trackCircles, calculateCircleScale, draw } from '../utils/circles.js'
 import '../App.css'
@@ -58,11 +63,16 @@ const Canvas = ({nose, width, height}) => {
 
   return (
     <div className="audioCanvas">
-    <audio id="background-sounds" src={backgroundSounds}></audio>
-    <audio id="c-note" src={cNote}></audio>
-    <audio id="g-note" src={gNote}></audio>
-    <audio id="d-note" src={dNote}></audio>
-    <audio id="a-note" src={aNote}></audio>
+    // <audio id="background-sounds" src={backgroundSounds}></audio>
+    // <audio id="c-note" src={cNote}></audio>
+    // <audio id="g-note" src={gNote}></audio>
+    // <audio id="d-note" src={dNote}></audio>
+    // <audio id="a-note" src={aNote}></audio>
+    <audio id="background-sounds" src={backgroundnew}></audio>
+    <audio id="c-note" src={jingleC}></audio>
+    <audio id="g-note" src={jingleF}></audio>
+    <audio id="d-note" src={jingleG}></audio>
+    <audio id="a-note" src={jingleC2}></audio>
     <canvas
       id="canvas"
       ref={canvasRef}
