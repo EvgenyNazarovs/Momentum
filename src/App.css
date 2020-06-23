@@ -45,12 +45,15 @@
 #best-hp {
   position: fixed;
   bottom: 5%;
-  left: 75px;
+  left: 95px;
 }
 
 #hp-text {
   font-family: 'Varela Round', sans-serif;
+  position: fixed;
   font-size: 20px;
+  left: 80px;
+  bottom: 10%
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -83,12 +86,46 @@
   }
 }
 
-.landingPage {
-  position:absolute;
-  left:240px;
-  width:82vw;
-  height: 100vh;
+.landingPage-text {
+  font-family: 'Varela Round', sans-serif;
+  color: white;
+  font-size: 25px;
+  position:fixed;
+  left: 280px;
+  top: 35%;
+  right: 10%;
 }
+
+.landingPage-subtext {
+  font-family: 'Varela Round', sans-serif;
+  color: white;
+  font-size: 20px;
+  position:fixed;
+  left: 280px;
+  top: 41%;
+  right: 10%;
+}
+
+.landingPage-button {
+	box-shadow: 1px 10px 20px -7px #000000;
+	background-color:#ff5f6c;
+	border-radius:45px;
+	border:0px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Varela Round', sans-serif;
+	font-size:18px;
+	padding:13px 32px;
+  position:fixed;
+  left: 280px;
+  top: 49%;
+  right: 10%;
+}
+.landingPage-button:hover {
+	background-color:#d64d59;
+}
+
 
 canvas {
     position:absolute;
