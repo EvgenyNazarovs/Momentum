@@ -1,42 +1,48 @@
-import React, {useState, useEffect} from 'react';
-import PoseNet from './components/PoseNet'
-import './App.css';
+import React, {useState} from 'react';
+import PlaySpace from './components/PlaySpace';
+import NavBar from './components/NavBar'
+import './App.css'
+import { diveWithin, diveWithout } from './presets.js'
 
 function App() {
-  const [posesString, setPosesString] = useState([])
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [preset, setPreset] = useState(diveWithout)
+  const [presetName, setPresetName] = useState('diveWithout')
+  const [type, setType] = useState('circle')
 
+  const setDiveWithin = () => {
+    // this.forceUpdate();
+    setPresetName('diveWithin')
+    setType('circle')
+    setPreset(diveWithin);
+  }
 
+  const setDiveWithout = () => {
+    // this.forceUpdate();
+    setPresetName('diveWithout')
+    setType('square')
+    setPreset(diveWithout);
+  }
 
-  useEffect(() => {
-
-
-  if (posesString.length !== 0) {
-      if (posesString[0].part === 'nose') {
-        let noseX = posesString[0].position.x;
-        let noseY = posesString[0].position.y
-
-        if (noseX > 50 && noseX < 250 && noseY > 50 && noseY < 250) {
-          console.log('youre in the frame')
-        } else {
-          console.log('now youre not.');
-        }
-      }
-    }}, [posesString])
-
+  if (!isPlaying) {
+    return (
+    <div>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <div className="landingPage">
+    <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
+    <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
+    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
+    </div>
+    </div>
+  )
+}
 
   return (
-    <div className="App">
-  <PoseNet
-    inferenceConfig={{ decodingMethod: "single-person" }}
-    onEstimate={poses => {
-          if (poses.length !== 0) setPosesString(poses[0].keypoints)
-    }}
-  />
-
-
-
+    <div>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <PlaySpace preset={preset} presetName={presetName} type={type}/>
     </div>
-  );
+  )
 }
 
 export default App;
