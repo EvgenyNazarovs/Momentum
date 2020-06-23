@@ -1,6 +1,7 @@
 import { calculateScale } from './canvas.js'
 
 export function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) {
+  ctx.clearRect(0, 0, 1000, 1000);
   const [widthScale, heightScale] = calculateScale(width, height);
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = style

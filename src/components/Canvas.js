@@ -42,16 +42,23 @@ const Canvas = ({nose,
   useEffect(() => {
     if (nose.length === 0) return () => {}
 
-
-
+    const backgroundnew = document.getElementById("backgroundnew");
+    const danceBackground = document.getElementById("danceBackground");
 
     if (presetName === 'diveWithin') {
+      danceBackground.pause()
+      backgroundnew.pause();
+      danceBackground.load();
 
       const ctx = canvasRef.current.getContext('2d');
-
+      // ctx.clearRect(0, 0, canvasRef.width, canvasRef.height)
+      // ctx.save();
+      // ctx,setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+      // ctx.restore()
       console.log('diveWithin here.');
 
-      const backgroundnew = document.getElementById("backgroundnew");
+      // const backgroundnew = document.getElementById("backgroundnew");
       backgroundnew.play()
       const cNote = document.getElementById("jingleC");
       const aNote = document.getElementById("jingleF");
@@ -71,13 +78,19 @@ const Canvas = ({nose,
 
 
     if (presetName === 'diveWithout') {
+      danceBackground.pause()
+      backgroundnew.pause();
+      backgroundnew.load();
 
-        const ctx = canvasRef.current.getContext('2d');
+      const ctx = canvasRef.current.getContext('2d');
+      // ctx.save();
+      // ctx,setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+      // ctx.restore()
 
-    
 
       console.log('diveWithout here.');
-      const danceBackground = document.getElementById("danceBackground");
+      // const danceBackground = document.getElementById("danceBackground");
       danceBackground.play()
       const bass = document.getElementById("bass");
       const percussion = document.getElementById("percussion");
@@ -104,6 +117,7 @@ const Canvas = ({nose,
     <audio id="g-note" src={gNote}></audio>
     <audio id="d-note" src={dNote}></audio>
     <audio id="a-note" src={aNote}></audio>
+
     <audio id="backgroundnew" src={backgroundnew}></audio>
     <audio id="jingleC" src={jingleC}></audio>
     <audio id="jingleF" src={jingleF}></audio>
@@ -115,6 +129,7 @@ const Canvas = ({nose,
     <audio id="percussion" src={percussion}></audio>
     <audio id="sfx1" src={sfx1}></audio>
     <audio id="sfx2" src={sfx2}></audio>
+
     <canvas
       id="canvas"
       ref={canvasRef}

@@ -10,11 +10,13 @@ function App() {
   const [presetName, setPresetName] = useState('diveWithin')
 
   const setDiveWithin = () => {
+    // this.forceUpdate();
     setPresetName('diveWithin')
     setPreset(diveWithin);
   }
 
   const setDiveWithout = () => {
+    // this.forceUpdate();
     setPresetName('diveWithout')
     setPreset(diveWithout);
   }
