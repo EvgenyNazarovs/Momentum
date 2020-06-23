@@ -12,7 +12,7 @@ export const diveWithin = {
   pattern: cartographer
 }
 
-// export const newPreset = {
+// export const diveWithout = {
 //   type: 'circle',
 //   shapeCoordinates: [
 //       [ 330, 160, 120 ],
@@ -20,7 +20,7 @@ export const diveWithin = {
 //       [ 220, 420, 120 ],
 //       [ 790, 420, 120 ]
 //   ],
-//   colour: 'rgba(255, 95, 109, 0.8)',
+//   colour: 'rgba(255, 195, 113, 0.8)',
 //   pattern: cartographer
 //
 // }
@@ -33,8 +33,8 @@ export const diveWithout = {
       [ 400, 160, 120 ],
       [ 450, 160, 120 ],
       [ 290, 420, 120 ],
-      [ 860, 420, 120 ],
-      [ 460, 420, 120 ]
+      [ 860, 420, 120 ]
+      // [ 460, 420, 120 ]
   ],
   colour: 'rgba(255, 195, 113, 0.8)',
   pattern: cartographer

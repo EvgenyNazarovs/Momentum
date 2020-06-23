@@ -6,8 +6,8 @@ import { diveWithin, diveWithout } from './presets.js'
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [preset, setPreset] = useState(diveWithout)
-  const [presetName, setPresetName] = useState('diveWithout')
+  const [preset, setPreset] = useState(diveWithin)
+  const [presetName, setPresetName] = useState('diveWithin')
 
   const setDiveWithin = () => {
     // this.forceUpdate();
