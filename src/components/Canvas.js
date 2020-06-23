@@ -142,7 +142,7 @@ const Canvas = ({nose,
 
 
 
-  }, [nose, presetName])
+  }, [nose, type])
 
   return (
     <div className="audioCanvas">
