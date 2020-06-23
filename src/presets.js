@@ -30,12 +30,10 @@ export const diveWithin = {
 export const diveWithout = {
   type: 'square',
   shapeCoordinates: [
-      [ 400, 160, 120 ],
-      [ 450, 160, 120 ],
-      [ 290, 420, 120 ],
-      [ 860, 420, 120 ]
-      // [ 460, 420, 120 ]
+    [90, 40, 280, 280],
+     [620, 40, 280, 280],
+     [90, 350, 280, 280],
+     [620, 350, 280, 280]
   ],
-  colour: 'rgba(255, 195, 113, 0.8)',
-  pattern: cartographer
+  colour: 'rgba(255, 195, 113, 0.8)'
 }

@@ -30,6 +30,8 @@ const SquareCanvas = ({nose,
 
     const ctx = canvasRef.current.getContext('2d');
 
+    console.log(shapeCoordinates);
+
 
 
     danceBackground.play()
