@@ -11,7 +11,8 @@ import jingleC from '../sounds/jingleC.mp3'
 import jingleF from '../sounds/jingleF.mp3'
 import jingleG from '../sounds/jingleG.mp3'
 import jingleC2 from '../sounds/jingleC2.mp3'
-import Canvas from './Canvas.js'
+import CircleCanvas from './CircleCanvas.js'
+import SquareCanvas from './SquareCanvas.js'
 import {diveWithin, diveWithout} from '../presets.js'
 
 //   shapeCoordinates: [
@@ -27,7 +28,7 @@ import {diveWithin, diveWithout} from '../presets.js'
 function PlaySpace(
   {
     preset,
-  presetName
+    type
 }
 
 ) {
@@ -50,12 +51,26 @@ function PlaySpace(
         onEstimate={poses => {
               if (poses.length !== 0) setKeypoints(poses[0].keypoints)
         }} />
-      <Canvas nose={nose}
-              width={width}
-              height={height}
-              preset={preset}
-              presetName={presetName}
-              />
+
+
+        {type === 'square' ? (
+          <SquareCanvas nose={nose}
+                  width={width}
+                  height={height}
+                  preset={diveWithout}
+
+                  />
+                ) : (
+          <CircleCanvas nose={nose}
+                  width={width}
+                  height={height}
+                  preset={diveWithin}
+
+                  />
+
+        )}
+
+
     </div>
   )
 }

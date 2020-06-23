@@ -8,16 +8,19 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [preset, setPreset] = useState(diveWithout)
   const [presetName, setPresetName] = useState('diveWithout')
+  const [type, setType] = useState('circle')
 
   const setDiveWithin = () => {
     // this.forceUpdate();
     setPresetName('diveWithin')
+    setType('circle')
     setPreset(diveWithin);
   }
 
   const setDiveWithout = () => {
     // this.forceUpdate();
     setPresetName('diveWithout')
+    setType('square')
     setPreset(diveWithout);
   }
 
@@ -37,7 +40,7 @@ function App() {
   return (
     <div>
     <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
-    <PlaySpace preset={preset} presetName={presetName}/>
+    <PlaySpace preset={preset} presetName={presetName} type={type}/>
     </div>
   )
 }
