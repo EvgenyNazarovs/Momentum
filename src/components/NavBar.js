@@ -1,14 +1,34 @@
 import React from 'react';
 import styling from '../App.css';
+import { Link, Route, Switch } from 'react-router-dom'
+import { diveWithin, diveWithout } from '../presets.js'
+import Canvas from './Canvas'
 
-const NavBar = () => {
+const NavBar = ({ setDiveWithin, setDiveWithout }) => {
+  console.log(setDiveWithin);
+
+  const handleDiveWithin = () => {
+    setDiveWithin();
+  }
+
+  const handleDiveWithout = () => {
+    setDiveWithout();
+  }
+
+
+
+
+
   return(
     <div className="nav-bar">
       <h1 id="nav-title">Momentum</h1>
 
       <div id="nav-icons">
-        <img id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/>
-        <img id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/>
+      <button onClick={handleDiveWithin} >
+        <img id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/></button>
+        <button onClick={handleDiveWithout} >
+        <img  id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/></button>
+
       </div>
       <div id="best-hp">
         <p id="hp-text">best with</p>

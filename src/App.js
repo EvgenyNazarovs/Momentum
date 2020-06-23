@@ -1,97 +1,42 @@
-import { calculateAudioCoordinates } from './canvasutil.js'
-import { calculateDistance } from './circleFunctions.js'
-
-const circleCoordinates = [
-    [ 330, 160, 120 ],
-    [ 680, 160, 120 ],
-    [ 220, 420, 120 ],
-    [ 790, 420, 120 ]
-]
-
+import React, {useState} from 'react';
+import PlaySpace from './components/PlaySpace';
+import NavBar from './components/NavBar'
+import './App.css'
+import { diveWithin, diveWithout } from './presets.js'
 
 function App() {
-  const [posesString, setPosesString] = useState([])
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [preset, setPreset] = useState(diveWithin)
+  const [presetName, setPresetName] = useState('diveWithin')
 
+  const setDiveWithin = () => {
+    setPresetName('diveWithin')
+    setPreset(diveWithin);
+  }
 
-const canvasRef = useRef()
+  const setDiveWithout = () => {
+    setPresetName('diveWithout')
+    setPreset(diveWithout);
+  }
 
-  useEffect(() => {
-
-    // const ctx = canvasRef.current.getContext("2d")
-    // ctx.clearRect(0,0,window.innerWidth-300,window.innerHeight);
-    //
-    // ctx.fillStyle = 'rgba(255, 192, 283, 0.5)'
-    // ctx.fillRect(90, 40, 280, 280) //upper left box
-    // ctx.fillRect(620, 40, 280, 280) //uppper right box
-    // ctx.fillRect(90, 350, 280, 280) // lower left box
-    // ctx.fillRect(620, 350, 280, 280) //lower right box
-
-    if (posesString.length === 0) return () => {}
-
-
-    const backgroundSounds = document.getElementById("background-sounds");
-    backgroundSounds.play()
-    const cNote = document.getElementById("c-note");
-    const gNote = document.getElementById("g-note");
-    const dNote = document.getElementById("d-note");
-    const aNote = document.getElementById("a-note");
-
-    // const [f, s, t, frth] = calculateAudioCoordinates(window.innerWidth-300, 674, squareCoordinates);
-    // // console.log("First Audio Shape: ", f);
-    // // console.log("Second Audio Shape: ", s);
-    // // console.log("Third Audio Shape: ", t);
-    // // console.log("Fourth Audio Shape: ", frth);
-
-  if (posesString.length !== 0) {
-      if (posesString[0].part === 'nose') {
-        const noseX = posesString[0].position.x;
-        const noseY = posesString[0].position.y
-
-        // monitorCircleDistance(circleCoordinates, posesString[0].position)
-
-
-
-        // if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
-        //     cNote.play()
-        //     console.log('upper right corner');
-        // } else if (noseX > s.lowX && noseX < s.highX && noseY > s.lowY && noseY < s.highY) {
-        //     gNote.play()
-        //     console.log('upper left corner');
-        // } else if (noseX > t.lowX && noseX < t.highX && noseY > t.lowY && noseY < t.highY) {
-        //     dNote.play()
-        //     console.log('lower right corner');
-        // } else if (noseX > frth.lowX && noseX < frth.highX && noseY > frth.lowY && noseY < frth.highY) {
-        //   aNote.play()
-        //   console.log('lower left corner');
-        // }
-      }
-    }}, [posesString])
-
+  if (!isPlaying) {
+    return (
+    <div>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <div className="landingPage">
+    <p>This app lets you experience your movement through sound and vision. For best results, use the latest version of Google Chrome and wear headphones.</p>
+    <button onClick={() => setIsPlaying(true)}>Start the experience</button>
+    </div>
+    </div>
+  )
+}
 
   return (
-    <div className="App">
-
-    <NavBar/>
-
-
-
-    <PoseNet
-      inferenceConfig={{ decodingMethod: "single-person" }}
-      onEstimate={poses => {
-            if (poses.length !== 0) setPosesString(poses[0].keypoints)
-      }}
-    />
-    <audio id="background-sounds" src={backgroundSounds}></audio>
-    <audio id="c-note" src={cNote}></audio>
-    <audio id="g-note" src={gNote}></audio>
-    <audio id="d-note" src={dNote}></audio>
-    <audio id="a-note" src={aNote}></audio>
-
-
-
-
+    <div>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <PlaySpace preset={preset} presetName={presetName}/>
     </div>
-  );
+  )
 }
 
 export default App;
