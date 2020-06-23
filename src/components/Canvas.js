@@ -27,9 +27,10 @@ const Canvas = ({nose,
                  height,
                  presetName,
                  preset:
-                 { shapeCoordinates,
+                 { type,
+                   shapeCoordinates,
                    colour,
-                   pattern }}) => {
+                   pattern = "" }}) => {
 
   const canvasRef = useRef();
 
@@ -42,16 +43,19 @@ const Canvas = ({nose,
   useEffect(() => {
     if (nose.length === 0) return () => {}
 
+    const ctx = canvasRef.current.getContext('2d');
+    const backgroundnew = document.getElementById("backgroundnew");
+    const danceBackground = document.getElementById("danceBackground");
+
+
+    if (type === 'circle') {
+
+      danceBackground.pause()
+      backgroundnew.pause()
+      danceBackground.load()
 
 
 
-    if (presetName === 'diveWithin') {
-
-      const ctx = canvasRef.current.getContext('2d');
-
-      console.log('diveWithin here.');
-
-      const backgroundnew = document.getElementById("backgroundnew");
       backgroundnew.play()
       const cNote = document.getElementById("jingleC");
       const aNote = document.getElementById("jingleF");
@@ -70,14 +74,18 @@ const Canvas = ({nose,
 
 
 
-    if (presetName === 'diveWithout') {
+    if (presetName === 'square') {
 
-        const ctx = canvasRef.current.getContext('2d');
+      backgroundnew.pause()
+      danceBackground.pause()
+      backgroundnew.load()
 
-    
+
+
+
 
       console.log('diveWithout here.');
-      const danceBackground = document.getElementById("danceBackground");
+
       danceBackground.play()
       const bass = document.getElementById("bass");
       const percussion = document.getElementById("percussion");
