@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 .App {
   text-align: center;
   display: flex;
@@ -6,13 +8,50 @@
 }
 
 .nav-bar {
-  background-color: purple;
-  border: 2px solid black;
+  position: fixed;
+  background-color: #FF5F6D;
+  height: 85px;
   width: 100%;
   color: white;
-  display: flex;
 }
 
+#nav-title {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 35px;
+  position: fixed;
+  left: 17px;
+}
+
+#nav-icons {
+  position: fixed;
+  top: 85px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#FF5F6D, #FFC371);
+}
+
+#nav-yoga-icon {
+  position: fixed;
+  top: 30%;
+  left: 55px;
+}
+
+#nav-dance-icon {
+  position: fixed;
+  top: 50%;
+  left: 57px;
+}
+
+#best-hp {
+  position: fixed;
+  bottom: 5%;
+  left: 75px;
+}
+
+#hp-text {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

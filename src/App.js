@@ -1,5 +1,3 @@
-
-import Drawer from './components/Drawer.js'
 import { calculateAudioCoordinates } from './canvasutil.js'
 import { calculateDistance } from './circleFunctions.js'
 
@@ -51,7 +49,7 @@ const canvasRef = useRef()
 
         // monitorCircleDistance(circleCoordinates, posesString[0].position)
 
-      
+
 
         // if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
         //     cNote.play()
@@ -73,7 +71,7 @@ const canvasRef = useRef()
   return (
     <div className="App">
 
-    <Drawer/>
+    <NavBar/>
 
 
 

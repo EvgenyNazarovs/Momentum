@@ -27,7 +27,9 @@ export function draw(ctx, bodyPart, circleCoordinates, notes) {
       ctx.beginPath();
       ctx.arc( circleX, circleY, circleRadius, 0, Math.PI * 2, false)
       ctx.strokeStyle = 'rgba(0, 0, 255, 0.3)'
-      ctx.fillStyle = 'rgba(0, 0, 255, 0.3)'
+      // ctx.fillStyle = 'rgba(0, 0, 255, 0.3)'
+      // ctx.fillStyle = 'rgba(201, 152, 36, 0.8)'
+      ctx.fillStyle = 'rgba(255, 95, 109, 0.8)'
       // ctx.fillStyle = this.color;
       ctx.fill();
       let patrn = ctx.createPattern(img, 'repeat');

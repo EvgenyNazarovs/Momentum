@@ -4,13 +4,10 @@ import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
 import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
-import pattern from './Texture5.png'
 import './PoseNet.css'
-import texture1 from '../assets/Texture1.png'
-import cartographer from './cartographer.png'
 import '../App.css'
-import { prepareCanvas, calculateAudioCoordinates, calculateScale, prepareCanvasWithSquares } from '../canvasutil.js'
-import { prepareCanvasCircles } from '../circleFunctions.js'
+import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
+import cartographer from './cartographer.png'
 
 export default function PoseNet({
   style,
@@ -60,6 +57,7 @@ export default function PoseNet({
 
     const ctx = canvasRef.current.getContext("2d")
     const ctx2 = canvasRef1.current.getContext("2d")
+
     const img = new Image();
     img.src = cartographer
 
@@ -150,6 +148,7 @@ export default function PoseNet({
         clearInterval(intervalID)
         setErrorMessage(err.message)
         console.log(err.message);
+
       }
       //potentially can modify the interval of scanning poses
     }, Math.round(1000 / frameRate))
