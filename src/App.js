@@ -24,8 +24,9 @@ function App() {
     <div>
     <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
     <div className="landingPage">
-    <p>This app lets you experience your movement through sound and vision. For best results, use the latest version of Google Chrome and wear headphones.</p>
-    <button onClick={() => setIsPlaying(true)}>Start the experience</button>
+    <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
+    <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
+    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
     </div>
     </div>
   )
