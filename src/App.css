@@ -56,12 +56,6 @@
   bottom: 10%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -75,6 +69,24 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-logo-div {
+  position: absolute;
+  bottom: 5%;
+  left: 500px;
+}
+
+.App-logo-text {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 35px;
+  color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
