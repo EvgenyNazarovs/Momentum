@@ -29,7 +29,7 @@ const Canvas = ({nose,
                  preset:
                  { shapeCoordinates,
                    colour,
-                   pattern }}) => {
+                   pattern = '' }}) => {
 
   const canvasRef = useRef();
 
@@ -42,21 +42,46 @@ const Canvas = ({nose,
   useEffect(() => {
     if (nose.length === 0) return () => {}
 
-
-
+    const backgroundnew = document.getElementById("backgroundnew");
+    const danceBackground = document.getElementById("danceBackground");
+    const cNote = document.getElementById("jingleC");
+    const aNote = document.getElementById("jingleF");
+    const gNote = document.getElementById("jingleG");
+    const dNote = document.getElementById("jingleC2");
+    const bass = document.getElementById("bass");
+    const percussion = document.getElementById("percussion");
+    const sfx1 = document.getElementById("sfx1");
+    const sfx2 = document.getElementById("sfx2");
+    const ctx = canvasRef.current.getContext('2d');
 
     if (presetName === 'diveWithin') {
+      danceBackground.pause()
+      backgroundnew.pause();
+      cNote.pause();
+      aNote.pause();
+      gNote.pause();
+      dNote.pause();
+      bass.pause();
+      percussion.pause();
+      sfx1.pause();
+      sfx2.pause();
+      danceBackground.load();
+      bass.load();
+      percussion.load();
+      sfx1.load();
+      sfx2.load();
 
-      const ctx = canvasRef.current.getContext('2d');
-
+      // const ctx = canvasRef.current.getContext('2d');
+      // ctx.clearRect(0, 0, canvasRef.width, canvasRef.height)
+      // ctx.save();
+      // ctx,setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+      // ctx.restore()
       console.log('diveWithin here.');
 
-      const backgroundnew = document.getElementById("backgroundnew");
+      // const backgroundnew = document.getElementById("backgroundnew");
       backgroundnew.play()
-      const cNote = document.getElementById("jingleC");
-      const aNote = document.getElementById("jingleF");
-      const gNote = document.getElementById("jingleG");
-      const dNote = document.getElementById("jingleC2");
+
 
       const sounds = [cNote, aNote, gNote, dNote];
 
@@ -71,25 +96,45 @@ const Canvas = ({nose,
 
 
     if (presetName === 'diveWithout') {
+      danceBackground.pause()
+      backgroundnew.pause();
+      cNote.pause();
+      aNote.pause();
+      gNote.pause();
+      dNote.pause();
+      bass.pause();
+      percussion.pause();
+      sfx1.pause();
+      sfx2.pause();
+      backgroundnew.load();
+      cNote.load();
+      aNote.load();
+      gNote.load();
+      dNote.load();
 
-        const ctx = canvasRef.current.getContext('2d');
+      // const ctx = canvasRef.current.getContext('2d');
+      // ctx.save();
+      // ctx,setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+      // ctx.restore()
 
-    
 
       console.log('diveWithout here.');
-      const danceBackground = document.getElementById("danceBackground");
+      // const danceBackground = document.getElementById("danceBackground");
       danceBackground.play()
-      const bass = document.getElementById("bass");
-      const percussion = document.getElementById("percussion");
-      const sfx1 = document.getElementById("sfx1");
-      const sfx2 = document.getElementById("sfx2");
+
 
       const sounds = [bass, percussion, sfx1, sfx2];
 
       prepareCanvasWithSquares(ctx, width, height, shapeCoordinates, colour)
       const coordinates = calculateAudioCoordinates(width, height, shapeCoordinates);
       trackSquares(coordinates, sounds, nose);
-
+      // const [xScale, yScale, rScale] = calculateCircleScale(width, height, shapeCoordinates[0]);
+      // const updatedCircleCoordinates = shapeCoordinates.map(([x, y, r]) => {
+      //   return [x * xScale, y * yScale, r * rScale]
+      // })
+      // trackCircles(updatedCircleCoordinates, sounds, nose);
+      // draw(ctx, nose, updatedCircleCoordinates, sounds, pattern, colour);
     }
 
 
@@ -104,6 +149,7 @@ const Canvas = ({nose,
     <audio id="g-note" src={gNote}></audio>
     <audio id="d-note" src={dNote}></audio>
     <audio id="a-note" src={aNote}></audio>
+
     <audio id="backgroundnew" src={backgroundnew}></audio>
     <audio id="jingleC" src={jingleC}></audio>
     <audio id="jingleF" src={jingleF}></audio>
@@ -115,6 +161,7 @@ const Canvas = ({nose,
     <audio id="percussion" src={percussion}></audio>
     <audio id="sfx1" src={sfx1}></audio>
     <audio id="sfx2" src={sfx2}></audio>
+
     <canvas
       id="canvas"
       ref={canvasRef}
