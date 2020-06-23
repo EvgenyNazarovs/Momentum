@@ -126,6 +126,17 @@
 	background-color:#d64d59;
 }
 
+p {
+  user-select: none;
+}
+
+h1 {
+  user-select: none;
+}
+
+.presetImg:hover {
+  cursor: pointer;
+}
 
 canvas {
     position:absolute;
