@@ -10,7 +10,7 @@ const circleCoordinates = [
 
 
 
-export function draw(ctx, bodyPart, circleCoordinates) {
+export function draw(ctx, bodyPart, circleCoordinates, notes) {
 
   const {x: bodyX, y: bodyY} = bodyPart.position;
   let maxRadius = circleCoordinates[0][2] + 30
@@ -65,6 +65,7 @@ export function draw(ctx, bodyPart, circleCoordinates) {
 
       for (let i = 0; i < circleArray.length; i++) {
         circleArray[i].update();
+
       }
     }
 

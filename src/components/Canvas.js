@@ -49,9 +49,8 @@ const Canvas = ({nose, width, height}) => {
     const ctx = canvasRef.current.getContext('2d');
     // prepareCanvasCircles(img, ctx, circleScales, circleCoordinates, circleColour)
     trackCircles(updatedCircleCoordinates, notes, nose);
-    draw(ctx, nose, updatedCircleCoordinates)
-    console.log(circleCoordinates);
-    console.log(updatedCircleCoordinates);
+    draw(ctx, nose, updatedCircleCoordinates, notes)
+
 
 
   }, [nose])
