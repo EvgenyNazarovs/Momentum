@@ -7,7 +7,7 @@ import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjace
 import './PoseNet.css'
 import '../App.css'
 import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
-import cartographer from './cartographer.png'
+
 
 export default function PoseNet({
   style,
@@ -58,8 +58,7 @@ export default function PoseNet({
     const ctx = canvasRef.current.getContext("2d")
     const ctx2 = canvasRef1.current.getContext("2d")
 
-    const img = new Image();
-    img.src = cartographer
+
 
 
     // const img = new Image(10, 10);
@@ -166,7 +165,7 @@ export default function PoseNet({
 
   return (
     <>
-      <Loading name="model" target={net} />
+      <Loading  name="model" target={net} />
       <Loading name="input" target={image} />
       <font color="red">{errorMessage}</font>
       <video

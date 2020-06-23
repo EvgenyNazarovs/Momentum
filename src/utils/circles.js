@@ -1,5 +1,5 @@
 import { calculateScale } from './canvas.js'
-import cartographer from '../components/cartographer.png'
+
 
 const circleCoordinates = [
     [ 330, 160, 120 ],
@@ -10,12 +10,12 @@ const circleCoordinates = [
 
 
 
-export function draw(ctx, bodyPart, circleCoordinates, notes) {
+export function draw(ctx, bodyPart, circleCoordinates, notes, imgFile, colour) {
 
   const {x: bodyX, y: bodyY} = bodyPart.position;
   let maxRadius = circleCoordinates[0][2] + 30
 
-  function Circle(x, y, r) {
+  function Circle(x, y, r, notes) {
     const circleX = x;
     const circleY = y;
     let circleRadius = r;
@@ -23,18 +23,15 @@ export function draw(ctx, bodyPart, circleCoordinates, notes) {
 
     this.draw = function() {
       const img = new Image();
-      img.src = cartographer;
+      img.src = imgFile;
       ctx.beginPath();
       ctx.arc( circleX, circleY, circleRadius, 0, Math.PI * 2, false)
-      ctx.strokeStyle = 'rgba(0, 0, 255, 0.3)'
-      // ctx.fillStyle = 'rgba(0, 0, 255, 0.3)'
-      // ctx.fillStyle = 'rgba(201, 152, 36, 0.8)'
-      ctx.fillStyle = 'rgba(255, 95, 109, 0.8)'
-      // ctx.fillStyle = this.color;
+      ctx.strokeStyle = colour
+      ctx.fillStyle = colour
       ctx.fill();
       let patrn = ctx.createPattern(img, 'repeat');
       ctx.fillStyle = patrn;
-      ctx.fill()
+      ctx.fill();
     }
 
     this.update = function() {

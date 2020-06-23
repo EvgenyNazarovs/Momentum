@@ -1,14 +1,26 @@
 import React from 'react';
 import styling from '../App.css';
 
-const NavBar = () => {
+function NavBar(props) {
+  const handleChange = (presetName) => {
+    props.changePreset(presetName)
+
+  }
+
+
+
+
+
   return(
     <div className="nav-bar">
       <h1 id="nav-title">Momentum</h1>
 
       <div id="nav-icons">
-        <img id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/>
-        <img id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/>
+      <button onClick={() => handleChange}>
+        <img id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/></button>
+        <button onClick={() => handleChange}>
+        <img  id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/>
+        </button>
       </div>
       <div id="best-hp">
         <p id="hp-text">best with</p>

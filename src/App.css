@@ -83,6 +83,13 @@
   }
 }
 
+.landingPage {
+  position:absolute;
+  left:240px;
+  width:82vw;
+  height: 100vh;
+}
+
 canvas {
     position:absolute;
     left:240px;
