@@ -27,9 +27,10 @@ const Canvas = ({nose,
                  height,
                  presetName,
                  preset:
-                 { shapeCoordinates,
+                 { type,
+                   shapeCoordinates,
                    colour,
-                   pattern = '' }}) => {
+                   pattern = "" }}) => {
 
   const canvasRef = useRef();
 
@@ -54,7 +55,7 @@ const Canvas = ({nose,
     const sfx2 = document.getElementById("sfx2");
     const ctx = canvasRef.current.getContext('2d');
 
-    if (presetName === 'diveWithin') {
+    if (type === 'circle') {
       danceBackground.pause()
       backgroundnew.pause();
       cNote.pause();
@@ -95,7 +96,8 @@ const Canvas = ({nose,
 
 
 
-    if (presetName === 'diveWithout') {
+
+    if (type === 'square') {
       danceBackground.pause()
       backgroundnew.pause();
       cNote.pause();

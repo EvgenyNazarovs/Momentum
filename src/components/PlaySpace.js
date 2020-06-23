@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PoseNet from './PoseNet'
 import NavBar from './NavBar'
 import backgroundSounds from '../sounds/background.mp3'
@@ -36,24 +36,11 @@ function PlaySpace(
   const [keypoints, setKeypoints] = useState([])
   const [nose, setNose] = useState([])
 
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     if (keypoints.length !== 0 && keypoints[0].part === 'nose') {
       setNose(keypoints[0]);
     }
   }, [keypoints])
-
-
 
 
   return (
