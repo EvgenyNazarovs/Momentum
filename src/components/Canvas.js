@@ -7,7 +7,7 @@ import dNote from '../sounds/DNote.mp3'
 import { prepareCanvasWithSquares, calculateAudioCoordinates, trackSquares } from '../utils/squares.js'
 import { prepareCanvasCircles, calculateDistance, trackCircles, calculateCircleScale, draw } from '../utils/circles.js'
 import '../App.css'
-import cartographer from './cartographer.png'
+import cartographer from '../assets/cartographer.png'
 
 const squareCoordinates = [
   [90, 40, 280, 280],
@@ -49,7 +49,7 @@ const Canvas = ({nose, width, height}) => {
     const ctx = canvasRef.current.getContext('2d');
     // prepareCanvasCircles(img, ctx, circleScales, circleCoordinates, circleColour)
     trackCircles(updatedCircleCoordinates, notes, nose);
-    draw(ctx, nose, updatedCircleCoordinates, notes)
+    draw(ctx, nose, updatedCircleCoordinates, notes, cartographer)
 
 
 
