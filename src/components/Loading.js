@@ -4,7 +4,10 @@ import '../App.css'
 
 export default function({ name, target }) {
   if (!target) {
-    return <img src={logo} className="App-logo" alt="logo" />
+    return <div className="App-logo-div">
+      <img src={logo} className="App-logo" alt="logo" />
+      <h2 className="App-logo-text">loading...please be patient...</h2>
+    </div>
   }
   if (target instanceof Error) {
     return (

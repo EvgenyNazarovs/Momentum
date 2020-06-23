@@ -71,10 +71,16 @@
   color: #61dafb;
 }
 
-.App-logo {
+.App-logo-div {
   position: absolute;
-  top: 25%;
-  left: 40%;
+  bottom: 5%;
+  left: 500px;
+}
+
+.App-logo-text {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 35px;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
