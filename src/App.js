@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import PlaySpace from './components/PlaySpace';
 import NavBar from './components/NavBar'
 import './App.css'
-import { diveWithin, diveWithout } from './presets.js'
+import { diveWithin } from './presets/diveWithin'
+import { diveWithout } from './presets/diveWithout'
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);

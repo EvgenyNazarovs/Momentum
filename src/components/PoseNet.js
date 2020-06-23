@@ -61,6 +61,7 @@ export default function PoseNet({
 
 
 
+
     // const img = new Image(10, 10);
     // img.src = pattern
     // img.onload = function()
@@ -134,14 +135,14 @@ export default function PoseNet({
 
 
         // ctx.fillRect(620, 40, 280, 280) //uppper right box
-
+ctx2.clearRect(0, 0, width, height);
 
 
         // ctx.fillRect()
 
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx, keypoints)
+        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx2, keypoints)
 })
       } catch (err) {
         clearInterval(intervalID)
@@ -185,7 +186,7 @@ export default function PoseNet({
         onClick={e => console.log(e.clientX, e.clientY)}
       />
       <canvas
-        id="posenet-canvas"
+        id="canvas"
         style={style}
         className={className}
         ref={canvasRef1}
