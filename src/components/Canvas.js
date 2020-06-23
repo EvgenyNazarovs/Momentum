@@ -25,12 +25,15 @@ import sfx2 from '../sounds/diveWithout/sfx2.mp3'
 const Canvas = ({nose,
                  width,
                  height,
+                 presetName,
                  preset:
                  { shapeCoordinates,
                    colour,
                    pattern }}) => {
-  const [preset, setPreset] = useState('diveWithout');
+
   const canvasRef = useRef();
+
+
 
 
 
@@ -40,9 +43,13 @@ const Canvas = ({nose,
     if (nose.length === 0) return () => {}
 
 
-    const ctx = canvasRef.current.getContext('2d');
 
-    if (preset === 'yoga') {
+
+    if (presetName === 'diveWithin') {
+
+      const ctx = canvasRef.current.getContext('2d');
+
+      console.log('diveWithin here.');
 
       const backgroundnew = document.getElementById("backgroundnew");
       backgroundnew.play()
@@ -61,7 +68,15 @@ const Canvas = ({nose,
       draw(ctx, nose, updatedCircleCoordinates, sounds, pattern, colour);
     }
 
-    else if (preset === 'diveWithout') {
+
+
+    if (presetName === 'diveWithout') {
+
+        const ctx = canvasRef.current.getContext('2d');
+
+    
+
+      console.log('diveWithout here.');
       const danceBackground = document.getElementById("danceBackground");
       danceBackground.play()
       const bass = document.getElementById("bass");
@@ -80,12 +95,7 @@ const Canvas = ({nose,
 
 
 
-
-
-
-
-
-  }, [nose])
+  }, [nose, presetName])
 
   return (
     <div className="audioCanvas">
