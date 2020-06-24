@@ -1,19 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { prepareCanvasWithSquares, calculateAudioCoordinates, trackSquares } from '../utils/squares.js'
 import '../App.css'
-import bass from '../sounds/diveWithout/bass.mp3'
-import danceBackground from '../sounds/diveWithout/dance-background.mp3'
-import percussion from '../sounds/diveWithout/percussion.mp3'
-import sfx1 from '../sounds/diveWithout/sfx1.mp3'
-import sfx2 from '../sounds/diveWithout/sfx2.mp3'
-
-const sounds = [
-  new Audio(bass),
-  new Audio(percussion),
-  new Audio(sfx2),
-  new Audio(sfx1)
-]
-
 
 const SquareCanvas = ({nose,
                  width,
@@ -24,7 +11,8 @@ const SquareCanvas = ({nose,
                  { type,
                    shapeCoordinates,
                    backgroundSound,
-                   colour
+                   colour,
+                   sounds
                    }}) => {
 
 
