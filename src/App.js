@@ -1,24 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PlaySpace from './components/PlaySpace';
 import NavBar from './components/NavBar'
 import './App.css'
-import { diveWithin, diveWithout } from './presets.js'
+import { diveWithin } from './presets/diveWithin'
+import { diveWithout } from './presets/diveWithout'
+
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [preset, setPreset] = useState(diveWithout)
-  const [presetName, setPresetName] = useState('diveWithout')
+  const [preset, setPreset] = useState(diveWithin)
+  const [presetName, setPresetName] = useState('diveWithin')
   const [type, setType] = useState('circle')
 
   const setDiveWithin = () => {
-    // this.forceUpdate();
     setPresetName('diveWithin')
     setType('circle')
     setPreset(diveWithin);
   }
 
   const setDiveWithout = () => {
-    // this.forceUpdate();
     setPresetName('diveWithout')
     setType('square')
     setPreset(diveWithout);
@@ -27,19 +27,19 @@ function App() {
   if (!isPlaying) {
     return (
     <div>
-    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout} presetName={presetName}/>
     <div className="landingPage">
-    <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
+    <p className="landingPage-text">This app lets you experience sound and vision through your movement. You can play different sounds by hovering your nose over shapes on the screen.</p>
     <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
-    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
+    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start</button>
     </div>
     </div>
-  )
-}
+    )
+  }
 
   return (
     <div>
-    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout} presetName={presetName}/>
     <PlaySpace preset={preset} presetName={presetName} type={type}/>
     </div>
   )

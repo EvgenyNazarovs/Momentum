@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  background-attachment: fixed;
-}
-
 .nav-bar {
   position: fixed;
   background-color: #FF5F6D;
   height: 85px;
   width: 100%;
   color: white;
+}
+
+.selected-icon {
+  border: 1px solid white;
+  border-radius: 10px;
 }
 
 #nav-title {
@@ -56,21 +54,6 @@
   bottom: 10%
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .App-logo-div {
   position: absolute;
   bottom: 5%;
@@ -83,28 +66,13 @@
   color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .landingPage-text {
   font-family: 'Varela Round', sans-serif;
   color: white;
   font-size: 25px;
   position:fixed;
   left: 280px;
-  top: 35%;
+  top: 30%;
   right: 10%;
 }
 
@@ -114,7 +82,7 @@
   font-size: 20px;
   position:fixed;
   left: 280px;
-  top: 41%;
+  top: 47%;
   right: 10%;
 }
 
@@ -131,7 +99,7 @@
 	padding:13px 32px;
   position:fixed;
   left: 280px;
-  top: 49%;
+  top: 55%;
   right: 10%;
   transition: 0.5s;
 }
@@ -148,7 +116,28 @@ h1 {
   user-select: none;
 }
 
-.presetImg:hover {
+.icon {
+  display: flex;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.selected-icon {
+  display: flex;
+  align-self: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+
+}
+
+.selected-icon:hover {
   cursor: pointer;
 }
 

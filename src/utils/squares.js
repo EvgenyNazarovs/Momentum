@@ -1,39 +1,38 @@
 import { calculateScale } from './canvas.js'
 
-export function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) {
+export function drawSquaresAndTrackMovements(ctx, width, height, squareCoordinates, style, sounds, bodyPart, pattern) {
+  const img = new Image();
+  img.src = pattern;
+  let patrn = ctx.createPattern(img, 'repeat')
   ctx.clearRect(0, 0, 1000, 1000);
-  const [widthScale, heightScale] = calculateScale(width, height);
   ctx.clearRect(0, 0, width, height);
-  ctx.fillStyle = style
 
-  squareCoordinates.forEach(([s1,s2,s3,s4]) => {
-    ctx.fillRect(s1 * widthScale, s2 * heightScale, s3 * widthScale, s4 * heightScale)
-  })
+  drawSquares(squareCoordinates, style, ctx, patrn);
+  trackMovementsAgainstSquares(squareCoordinates, style, ctx, bodyPart, sounds)
+
 }
 
-export function calculateAudioCoordinates(width, height, squareCoordinates) {
-  const [widthScale, heightScale] = calculateScale(width, height)
-
-  const audioCoordinates = squareCoordinates.map(([s1, s2, s3, s4]) => {
-    return {
-      lowX: s1 * widthScale,
-      highX: (s1 + s3) * widthScale,
-      lowY: s2 * heightScale,
-      highY: (s2 + s4) * heightScale
-    }
+function drawSquares(squareCoordinates, style, ctx, patrn) {
+  squareCoordinates.forEach(([s1,s2,s3,s4], index) => {
+    ctx.fillStyle = style[0]
+    ctx.fillRect(s1, s2, s3, s4)
   })
-  return audioCoordinates;
+
+  squareCoordinates.forEach(([s1,s2,s3,s4], index) => {
+    ctx.fillStyle = patrn
+    ctx.fillRect(s1, s2, s3, s4)
+  })
+
+
 }
 
-export function trackSquares(shapes, notes, bodyPart) {
+function trackMovementsAgainstSquares(squareCoordinates, style, ctx, bodyPart, sounds) {
   const { x: partX, y: partY } = bodyPart.position;
-  console.log(notes);
-  console.log(partX, partY);
-  console.log(shapes);
-
-  shapes.forEach(({lowX, highX, lowY, highY}, index) => {
-    if (partX > lowX && partX < highX && partY > lowY && partY < highY) {
-      notes[index].play();
+  squareCoordinates.forEach(([s1,s2,s3,s4], index) => {
+    if (partX > s1 &&  partX < (s1 + s3) && partY > s2 && partY < (s2 + s4)) {
+      sounds[index].play();
+      ctx.fillStyle = style[1];
+      ctx.fillRect(s1, s2, s3, s4)
     }
   })
 }
