@@ -41,16 +41,6 @@ export default function PoseNet({
     frameRate
   })
 
-  const circleCoordinates = [
-      [ 330, 160, 120 ],
-      [ 680, 160, 120 ],
-      [ 220, 420, 120 ],
-      [ 790, 420, 120 ]
-  ]
-
-
-
-
   useEffect(() => {
     if (!net || !image) return () => {}
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
@@ -64,20 +54,17 @@ export default function PoseNet({
         const poses = await net.estimatePoses(image, inferenceConfigRef.current)
         // takes poses that meet confidence criteria determined below
 
-
         const confidentPoses = getConfidentPoses(
           poses,
           minPoseConfidence,
           minPartConfidence
         )
 
-
-
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
         console.log('Posenet Heigt: ', height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-      
+
 
         ctx.globalAlpha = 0.9
 

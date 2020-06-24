@@ -23,7 +23,6 @@ function App() {
     setPreset(diveWithout);
   }
 
-
   if (!isPlaying) {
     return (
     <div>
