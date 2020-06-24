@@ -8,6 +8,7 @@ const CircleCanvas = ({nose,
                  width,
                  height,
                  presetName,
+                 play,
                  preset:
                  { type,
                    shapeCoordinates,
@@ -21,11 +22,10 @@ const CircleCanvas = ({nose,
 
 
 
+
   useEffect(() => {
-    if (nose.length === 0) return () => {}
-
-
-
+    console.log(play);
+    if (nose.length === 0 ) return () => {}
 
 
 
@@ -41,12 +41,17 @@ const CircleCanvas = ({nose,
       draw(ctx, nose, updatedCircleCoordinates, sounds, pattern, colour);
 
 
+
+
+
+  }, [nose])
+
+  useEffect(() => {
     return () => {
       backgroundSound.pause()
       sounds.forEach(sound => sound.pause())
     }
-
-  }, [nose, type])
+  }, [play])
 
   return (
     <div className="audioCanvas">

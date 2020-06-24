@@ -147,7 +147,7 @@ ctx2.clearRect(0, 0, width, height);
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
-        console.log(err.message);
+  
 
       }
       //potentially can modify the interval of scanning poses

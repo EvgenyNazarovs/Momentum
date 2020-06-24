@@ -50,6 +50,7 @@ function PlaySpace(
                   width={width}
                   height={height}
                   preset={diveWithout}
+                  play={type === 'square' ? true : false}
 
                   />
                 ) : (
@@ -57,6 +58,7 @@ function PlaySpace(
                   width={width}
                   height={height}
                   preset={diveWithin}
+                  play={type === 'circle' ? true : false}
 
                   />
 
