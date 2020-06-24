@@ -1,12 +1,10 @@
 import React from "react"
-import logo from '../assets/GradientSpinner.png'
 import '../App.css'
 
 
 export default function({ name, target }) {
   if (!target) {
     return  <div className="App-logo-div">
-              <img src={logo} className="App-logo" alt="logo" />
               <h2 className="App-logo-text">loading...please be patient...</h2>
             </div>
   }

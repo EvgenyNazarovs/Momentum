@@ -5,7 +5,7 @@ export function draw(ctx, bodyPart, circleCoordinates, imgFile, colour) {
   const {x: bodyX, y: bodyY} = bodyPart.position;
   let maxRadius = circleCoordinates[0][2] + 30
 
-  function Circle(x, y, r, notes) {
+  function Circle(x, y, r) {
     const circleX = x;
     const circleY = y;
     let circleRadius = r;
