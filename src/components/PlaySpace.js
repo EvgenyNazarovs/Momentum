@@ -1,19 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PoseNet from './PoseNet'
 import NavBar from './NavBar'
-import backgroundSounds from '../sounds/background.mp3'
-import cNote from '../sounds/CNote.mp3'
-import gNote from '../sounds/GNote.mp3'
-import aNote from '../sounds/ANote.mp3'
-import dNote from '../sounds/DNote.mp3'
-import backgroundnew from '../sounds/backgroundnew.mp3'
-import jingleC from '../sounds/jingleC.mp3'
-import jingleF from '../sounds/jingleF.mp3'
-import jingleG from '../sounds/jingleG.mp3'
-import jingleC2 from '../sounds/jingleC2.mp3'
+import { diveWithin } from '../presets/diveWithin'
+import { diveWithout } from '../presets/diveWithout'
 import CircleCanvas from './CircleCanvas.js'
 import SquareCanvas from './SquareCanvas.js'
-import {diveWithin, diveWithout} from '../presets.js'
+
 
 //   shapeCoordinates: [
 //       [ 330, 160, 120 ],
@@ -58,6 +50,7 @@ function PlaySpace(
                   width={width}
                   height={height}
                   preset={diveWithout}
+                  play={type === 'square' ? true : false}
 
                   />
                 ) : (
@@ -65,6 +58,7 @@ function PlaySpace(
                   width={width}
                   height={height}
                   preset={diveWithin}
+                  play={type === 'circle' ? true : false}
 
                   />
 

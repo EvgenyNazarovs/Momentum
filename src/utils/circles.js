@@ -127,13 +127,14 @@ function calculateRadiusRatio(x, y, xScale, yScale) {
   return newDistance / initialDistance;
 }
 
-export function trackCircles(circleCoordinates, notes, bodyPart) {
+export function trackCircles(circleCoordinates, sounds, bodyPart) {
   const { x: partX, y: partY } = bodyPart.position;
 
   circleCoordinates.forEach(([cX, cY, cR], index) => {
     const dist = calculateDistance([cX, cY], partX, partY);
     if (dist < cR) {
-      notes[index].play();
+      sounds[index].play();
+      console.log(sounds[index]);
       //insert animation
     }
   })

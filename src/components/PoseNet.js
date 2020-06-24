@@ -58,13 +58,6 @@ export default function PoseNet({
     const ctx = canvasRef.current.getContext("2d")
     const ctx2 = canvasRef1.current.getContext("2d")
 
-
-
-
-    // const img = new Image(10, 10);
-    // img.src = pattern
-    // img.onload = function()
-
     const intervalID = setInterval(async () => {
       try {
         // collects poses based on the image from stream
@@ -84,69 +77,19 @@ export default function PoseNet({
         ctx.drawImage(image, 0, 0, width, height)
         console.log('Posenet Heigt: ', height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
+      
 
-
-
-
-
-
-        // let patrn = ctx2.createPattern(img, 'repeat');
-
-
-
-        // we can set up our shapes and visuals here.
         ctx.globalAlpha = 0.9
-        // const squareColour = 'rgba(255, 192, 283, 0.5)'
 
-
-
-      //   const circleColour = 'rgba(201, 152, 36, 0.9)'
-      // prepareCanvasCircles(img, ctx2, width, height, circleCoordinates, circleColour);
-      //   let upperRightCircle = new Path2D();
-      //   let upperLeftCircle = new Path2D();
-      //   let lowerRightCircle = new Path2D();
-      //   let lowerLeftCircle = new Path2D();
-      //
-      //   upperRightCircle.arc(495, 200, 165, 0, 2 * Math.PI);
-      //   upperLeftCircle.arc(905, 200, 165, 0, 2 * Math.PI);
-      //   lowerRightCircle.arc(300, 530, 165, 0, 2 * Math.PI);
-      //   lowerLeftCircle.arc(1100, 530, 165, 0, 2 * Math.PI);
-      //   ctx2.fill(upperRightCircle)
-      //   ctx2.fill(upperLeftCircle)
-      //   ctx2.fill(lowerRightCircle)
-      //   ctx2.fill(lowerLeftCircle)
-      //
-      //
-      //   ctx2.fillStyle = patrn;
-      // // ctx.fillRect(0, 0, 500, 500)
-      //   ctx2.fill(upperRightCircle)
-      //   ctx2.fill(upperLeftCircle)
-      //   ctx2.fill(lowerRightCircle)
-      //   ctx2.fill(lowerLeftCircle)
-
-
-
-
-        // let patrn = ctx.createPattern(img, 'repeat');
-        // ctx.fillStyle = patrn;
-
-        // ctx.fillRect(90, 40, 280, 280) //upper left box
-
-
-        // ctx.fillRect(620, 40, 280, 280) //uppper right box
-
-
-
-        // ctx.fillRect()
-
+ctx2.clearRect(0, 0, width, height);
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx, keypoints)
+        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx2, keypoints)
 })
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
-        console.log(err.message);
+
 
       }
       //potentially can modify the interval of scanning poses
@@ -185,7 +128,7 @@ export default function PoseNet({
         onClick={e => console.log(e.clientX, e.clientY)}
       />
       <canvas
-        id="posenet-canvas"
+        id="canvas"
         style={style}
         className={className}
         ref={canvasRef1}

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PlaySpace from './components/PlaySpace';
 import NavBar from './components/NavBar'
 import './App.css'
-import { diveWithin, diveWithout } from './presets.js'
+import { diveWithin } from './presets/diveWithin'
+import { diveWithout } from './presets/diveWithout'
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -11,18 +12,17 @@ function App() {
   const [type, setType] = useState('circle')
 
   const setDiveWithin = () => {
-    // this.forceUpdate();
     setPresetName('diveWithin')
     setType('circle')
     setPreset(diveWithin);
   }
 
   const setDiveWithout = () => {
-    // this.forceUpdate();
     setPresetName('diveWithout')
     setType('square')
     setPreset(diveWithout);
   }
+
 
   if (!isPlaying) {
     return (
