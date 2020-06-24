@@ -38,5 +38,6 @@ This app is built with the following frameworks and libraries:
 
 ## Thanks
 Yoyota's React PoseNet Wrapper (https://github.com/yoyota/react-posenet)
+
 ---
 ---
