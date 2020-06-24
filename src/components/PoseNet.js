@@ -3,10 +3,9 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
-import pattern from './Texture5.png'
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../utils/posenet"
 import './PoseNet.css'
-import texture1 from '../assets/Texture1.png'
+import '../App.css'
 
 export default function PoseNet({
   style,
@@ -24,6 +23,7 @@ export default function PoseNet({
 }) {
   const videoRef = useRef()
   const canvasRef = useRef()
+  const canvasRef1 = useRef()
   const net = useLoadPoseNet(modelConfig)
   const [errorMessage, setErrorMessage] = useState()
   const onEstimateRef = useRef()
@@ -39,18 +39,12 @@ export default function PoseNet({
     frameRate
   })
 
-
-
-
-
   useEffect(() => {
     if (!net || !image) return () => {}
     if ([net, image].some(elem => elem instanceof Error)) return () => {}
 
     const ctx = canvasRef.current.getContext("2d")
-    // const img = new Image(10, 10);
-    // img.src = pattern
-    // img.onload = function()
+    const ctx2 = canvasRef1.current.getContext("2d")
 
     const intervalID = setInterval(async () => {
       try {
@@ -58,56 +52,29 @@ export default function PoseNet({
         const poses = await net.estimatePoses(image, inferenceConfigRef.current)
         // takes poses that meet confidence criteria determined below
 
-
         const confidentPoses = getConfidentPoses(
           poses,
           minPoseConfidence,
           minPartConfidence
         )
 
-
-
         //overlays posenet-ready canvas over the webstream
         ctx.drawImage(image, 0, 0, width, height)
+        console.log('Posenet Heigt: ', height)
         ctx.fillStyle = 'rgba(0, 0, 0, 1)'
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
-        // ctx.fillRect(0, 0, width, height)
 
-        // we can set up our shapes and visuals here.
+
         ctx.globalAlpha = 0.9
 
-
-        // ctx.fillRect(0, 0, 75, 75);
-
-        // ctx.fillRect(50, 50, 178, 178)
-
-
-
-
-        // let patrn = ctx.createPattern(img, 'repeat');
-        // ctx.fillStyle = patrn;
-
-        // ctx.fillRect(90, 40, 280, 280) //upper left box
-
-
-        // ctx.fillRect(620, 40, 280, 280) //uppper right box
-
-
-
-        // ctx.fillRect()
-
+ctx2.clearRect(0, 0, width, height);
 
         onEstimateRef.current(confidentPoses)
-        confidentPoses.forEach(({ keypoints }) => {
-          const adjacentKeyPoints = getAdjacentKeyPoints(keypoints)
-          console.log(adjacentKeyPoints)
+        confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx2, keypoints)
 })
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
-        console.log(err.message);
+
       }
       //potentially can modify the interval of scanning poses
     }, Math.round(1000 / frameRate))
@@ -125,7 +92,7 @@ export default function PoseNet({
 
   return (
     <>
-      <Loading name="model" target={net} />
+      <Loading  name="model" target={net} />
       <Loading name="input" target={image} />
       <font color="red">{errorMessage}</font>
       <video
@@ -135,13 +102,23 @@ export default function PoseNet({
         width={width}
         height={height}
       />
-      <canvas id="canvas"
+      <canvas
+        id="posenet-canvas"
         style={style}
         className={className}
         ref={canvasRef}
         width={width}
         height={height}
         onClick={e => console.log(e.clientX, e.clientY)}
+      />
+      <canvas
+        id="canvas"
+        style={style}
+        className={className}
+        ref={canvasRef1}
+        width={width}
+        height={height}
+
       />
     </>
   )
