@@ -33,7 +33,7 @@ const SquareCanvas = ({nose,
 
 
   useEffect(() => {
-    if (nose.length === 0 || play === false) return () => {}
+    if (nose.length === 0) return () => {}
 
     const ctx = canvasRef.current.getContext('2d');
 

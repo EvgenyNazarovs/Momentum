@@ -12,14 +12,12 @@ function App() {
   const [type, setType] = useState('circle')
 
   const setDiveWithin = () => {
-    // this.forceUpdate();
     setPresetName('diveWithin')
     setType('circle')
     setPreset(diveWithin);
   }
 
   const setDiveWithout = () => {
-    // this.forceUpdate();
     setPresetName('diveWithout')
     setType('square')
     setPreset(diveWithout);

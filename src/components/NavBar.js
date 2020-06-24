@@ -16,10 +16,6 @@ const NavBar = ({ setDiveWithin, setDiveWithout }) => {
     setDiveWithout();
   }
 
-
-
-
-
   return(
     <div className="nav-bar">
       <h1 id="nav-title">Momentum</h1>
