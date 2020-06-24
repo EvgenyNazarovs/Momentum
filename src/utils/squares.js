@@ -1,11 +1,18 @@
 import { calculateScale } from './canvas.js'
 
-export function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style) {
+export function prepareCanvasWithSquares(ctx, width, height, squareCoordinates, style, pattern) {
+  const img = new Image();
+  img.src = pattern;
   ctx.clearRect(0, 0, 1000, 1000);
   const [widthScale, heightScale] = calculateScale(width, height);
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = style
 
+  squareCoordinates.forEach(([s1,s2,s3,s4]) => {
+    ctx.fillRect(s1 * widthScale, s2 * heightScale, s3 * widthScale, s4 * heightScale)
+  })
+  let patrn = ctx.createPattern(img, 'repeat')
+  ctx.fillStyle = patrn
   squareCoordinates.forEach(([s1,s2,s3,s4]) => {
     ctx.fillRect(s1 * widthScale, s2 * heightScale, s3 * widthScale, s4 * heightScale)
   })

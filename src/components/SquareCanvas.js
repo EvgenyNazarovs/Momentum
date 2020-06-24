@@ -11,6 +11,7 @@ const SquareCanvas = ({nose,
                  { type,
                    shapeCoordinates,
                    backgroundSound,
+                   pattern,
                    colour,
                    sounds
                    }}) => {
@@ -27,7 +28,7 @@ const SquareCanvas = ({nose,
 
     backgroundSound.play()
 
-    prepareCanvasWithSquares(ctx, width, height, shapeCoordinates, colour)
+    prepareCanvasWithSquares(ctx, width, height, shapeCoordinates, colour, pattern)
     const coordinates = calculateAudioCoordinates(width, height, shapeCoordinates);
     trackSquares(coordinates, sounds, nose);
 

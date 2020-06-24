@@ -1,3 +1,4 @@
+import cardboard from '../assets/diagmonds.png'
 import bass from '../sounds/diveWithout/bass.mp3'
 import danceBackground from '../sounds/diveWithout/dance-background.mp3'
 import percussion from '../sounds/diveWithout/percussion.mp3'
@@ -16,7 +17,8 @@ export const diveWithout = {
      [200, 450, 200, 200],
      [670, 240, 200, 200]
   ],
-  colour: 'rgba(255, 195, 113, 0.8)',
+  colour: 'rgba(255, 195, 113, 0.9)',
+  pattern: cardboard,
   sounds: [
     new Audio(bass),
     new Audio(percussion),
