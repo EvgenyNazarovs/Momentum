@@ -1,9 +1,9 @@
 import React from 'react';
 import styling from '../App.css';
 import { Link, Route, Switch } from 'react-router-dom'
-import { diveWithin, diveWithout } from '../presets.js'
 import SquareCanvas from './SquareCanvas'
 import CircleCanvas from './CircleCanvas'
+
 
 const NavBar = ({ setDiveWithin, setDiveWithout }) => {
   console.log(setDiveWithin);
@@ -19,11 +19,9 @@ const NavBar = ({ setDiveWithin, setDiveWithout }) => {
   return(
     <div className="nav-bar">
       <h1 id="nav-title">Momentum</h1>
-
       <div id="nav-icons">
         <img className="presetImg" onClick={handleDiveWithin} id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/>
         <img className="presetImg" onClick={handleDiveWithout} id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/>
-
       </div>
       <div id="best-hp">
         <p id="hp-text">best with</p>

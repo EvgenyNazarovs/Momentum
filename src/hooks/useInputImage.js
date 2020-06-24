@@ -2,6 +2,7 @@ import to from "await-to-js"
 import { useState, useEffect } from "react"
 import { checkUserMediaError, getMediaStreamConstraints } from "../util"
 
+
 export default function useInputImage({
   input,
   width,

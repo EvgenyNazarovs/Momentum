@@ -2,19 +2,21 @@ import React, { useRef, useState, useEffect } from "react";
 import { prepareCanvasWithSquares, calculateAudioCoordinates, trackSquares } from '../utils/squares.js'
 import '../App.css'
 
+
 const SquareCanvas = ({
-                nose,
-                width,
-                height,
-                presetName,
-                play,
-                preset:
-                { type,
-                  shapeCoordinates,
-                  backgroundSound,
-                  colour,
-                  sounds
-                }}) => {
+                        nose,
+                        width,
+                        height,
+                        presetName,
+                        play,
+                        preset:
+                      {
+                        type,
+                        shapeCoordinates,
+                        backgroundSound,
+                        colour,
+                        sounds
+                      }}) => {
 
   const canvasRef = useRef();
 

@@ -1,5 +1,6 @@
 import { calculateScale } from './canvas.js'
 
+
 const circleCoordinates = [
   [ 330, 160, 120 ],
   [ 680, 160, 120 ],

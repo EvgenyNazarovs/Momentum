@@ -1,5 +1,6 @@
 import * as posenet from '@tensorflow-models/posenet'
 
+
 export function checkUserMediaError() {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     return new Error(

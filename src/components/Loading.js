@@ -2,6 +2,7 @@ import React from "react"
 import logo from '../assets/GradientSpinner.png'
 import '../App.css'
 
+
 export default function({ name, target }) {
   if (!target) {
     return <div className="App-logo-div">

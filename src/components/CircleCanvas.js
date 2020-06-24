@@ -11,7 +11,8 @@ const CircleCanvas = ({
                         presetName,
                         play,
                         preset:
-                      { type,
+                      {
+                        type,
                         shapeCoordinates,
                         colour,
                         sounds,
