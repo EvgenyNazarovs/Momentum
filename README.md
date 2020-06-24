@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ABOUT THE PROJECT
+This app provides an kinetic audio/visual experience. It takes user input via the webcam and passes it through the Machine Learning framework; PoseNet. This provides a map of keypoints attached to a person. We take the tracking data from the nose and allow the user to play sounds by moving over one of a number of shapes on the screen. There are 2 presets, one for Meditation/Yoga and another for Dance/Dubstep.
 
-## Available Scripts
+The brief is as follows:
 
-In the project directory, you can run:
+## Educational App
+Create an interactive music playing app. The app can be used as a tool for musicians experimenting with different ways to make sound or as a means for entertainment.
 
-### `npm start`
+## MVP
+- The App takes a user's body position to trigger specific sounds.
+- Have 2 sound presets: Melody based and Percussion based.
+- Use a motion tracking API to determine a user's position.
+- Provide visual feedback to the user when a sound is played.
+- Have an aesthetically pleasing front end that suits the app.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Extensions
+- Deploy.
+- Allow for custom layout of sounds.
+- Let users create their own sound board.
+- Allow users to record their in-app experiences.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# HOW TO RUN THE APP
 
-### `npm test`
+### NOTE: The app was tested in Google Chrome and so it is advised to use the latest version of Chrome when navigating.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Download the Repo using the green "Clone or Download" button at the top right of this project's GitHub page.
 
-### `npm run build`
+2. Using Terminal (or another CLI) navigate to the "project" folder run the following commands:
+  - npm i
+  - npm start
+3. Open Chrome and enter localhost:3000 in the address bar.
+4. Enjoy!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Tech Stack
+This app is built with the following frameworks and libraries:
+- React.js (https://github.com/facebook/react/)
+- PoseNet (https://github.com/tensorflow/tfjs-models/tree/master/posenet)
+---
+---
