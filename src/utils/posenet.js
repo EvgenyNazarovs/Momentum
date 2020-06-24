@@ -53,6 +53,16 @@ export function drawWithNose(ctx, keypoints) {
   }
 }
 
+export function drawNoseKeypoint(ctx, keypoints) {
+  if (keypoints.length !== 0) {
+    const { x, y } = keypoints[0].position;
+    ctx.beginPath()
+    ctx.arc(x, y, 15, 0, 2 * Math.PI, false)
+    ctx.fillStyle = "#006666"
+    ctx.fill()
+  }
+}
+
 export function drawWithAllPoints(ctx, keypoints) {
   keypoints.forEach(({ position }) => {
     const { x, y } = position
