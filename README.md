@@ -31,7 +31,6 @@ Create an interactive music playing app. The app can be used as a tool for music
 3. Open Chrome and enter localhost:3000 in the address bar.
 4. Enjoy!
 
-
 # Tech Stack
 This app is built with the following frameworks and libraries:
 - React.js (https://github.com/facebook/react/)

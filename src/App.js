@@ -33,8 +33,8 @@ function App() {
         <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
       </div>
     </div>
-  )
-}
+    )
+  }
 
   return (
     <div>
