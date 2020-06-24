@@ -1,5 +1,6 @@
 import * as posenet from '@tensorflow-models/posenet'
 
+
 export function checkUserMediaError() {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     return new Error(
@@ -48,7 +49,6 @@ export function drawWithNose(ctx, keypoints) {
 
     ctx.lineTo(x, y)
     ctx.stroke()
-    // ctx.beginPath()
     ctx.moveTo(x, y)
   }
 }
@@ -113,72 +113,19 @@ export const partNames = [
 ];
 
 export const partIds =
-    partNames.reduce((result, jointName, i) => {
-      result[jointName] = i;
-      return result;
-    }, {})
-
-
+  partNames.reduce((result, jointName, i) => {
+    result[jointName] = i;
+    return result;
+  }, {})
 
 export const connectedPartIndices = connectedPartNames.map(
     ([jointNameA, jointNameB]) => {
-  
   return  ([partIds[jointNameA], partIds[jointNameB]])
-
-
   })
 
 export function getAdjacentKeyPoints(keypoints) {
   return connectedPartIndices.reduce((result, [leftJoint, rightJoint]) => {
-
     result.push([keypoints[leftJoint], keypoints[rightJoint]])
     return result;
   }, [])
 }
-
-
-
-
-
-
-
-
-
-
-// export function drawSkeleton(ctx, keypoints, minConfidence) {
-//   const adjacentKeyPoints = posenet.getAdjacentKeyPoints(
-//     keypoints,
-//     minConfidence
-//   )
-//
-//   adjacentKeyPoints.forEach(keypoints => {
-//     drawSegment(
-//       toTuple(keypoints[0].position),
-//       toTuple(keypoints[1].position),
-//       "yellow",
-//       15,
-//       1,
-//       ctx
-//     )
-//   })
-// }
-//
-// function toTuple({x, y}) {
-//   return [x, y]
-// }
-//
-// function drawSegment(
-//   [firstX, firstY],
-//   [nextX, nextY],
-//   color,
-//   lineWidth,
-//   scale,
-//   canvasContext
-// ) {
-//   canvasContext.beginPath()
-//   canvasContext.moveTo(firstX * scale, firstY * scale)
-//   canvasContext.lineTo(nextX * scale, nextY * scale)
-//   canvasContext.lineWidth = lineWidth
-//   canvasContext.strokeStyle = color
-//   canvasContext.stroke()
-// }
