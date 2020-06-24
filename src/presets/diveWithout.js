@@ -7,12 +7,15 @@ import sfx2 from '../sounds/diveWithout/sfx2.mp3'
 export const diveWithout = {
   type: 'square',
   shapeCoordinates: [
-    [90, 40, 280, 280],
+      [90, 40, 280, 280],
      [620, 40, 280, 280],
      [90, 350, 280, 280],
      [620, 350, 280, 280]
   ],
-  colour: 'rgba(255, 195, 113, 0.8)',
+  colour: [
+    "rgba(254,181,72,0.8)",
+    "rgba(100,134,185,0.8)"
+  ],
   sounds: [
     new Audio(bass),
     new Audio(percussion),

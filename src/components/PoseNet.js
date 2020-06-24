@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../utils/posenetUtils"
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../utils/posenet"
 import './PoseNet.css'
 import '../App.css'
 
