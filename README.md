@@ -1,5 +1,5 @@
 # ABOUT THE PROJECT
-This app provides an kinetic audio/visual experience. It takes user input via the webcam and passes it through the Machine Learning framework; PoseNet. This provides a map of keypoints attached to a person. We take the tracking data from the nose and allow the user to play sounds by moving over one of a number of shapes on the screen. There are 2 presets, one for Meditation/Yoga and another for Dance/Dubstep.
+This app provides an kinetic audio/visual experience. It takes user input via the webcam and passes it through the Machine Learning framework; PoseNet, this provides a map of keypoints attached to a person. We take the tracking data from the nose and allow the user to play sounds by moving over one of a number of shapes on the screen. There are 2 presets, one for Meditation/Yoga and another for Dance/Dubstep.
 
 The brief is as follows:
 
