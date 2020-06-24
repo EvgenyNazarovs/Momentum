@@ -5,8 +5,6 @@ import jingleG from './sounds/jingleG.mp3'
 import jingleC2 from './sounds/jingleC2.mp3'
 import backgroundnew from './sounds/backgroundnew.mp3'
 
-
-
 export const diveWithin = {
   type: 'circle',
   shapeCoordinates: [
@@ -25,21 +23,6 @@ export const diveWithin = {
   },
   backgroundSound: new Audio(backgroundnew)
 }
-
-// export const diveWithout = {
-//   type: 'circle',
-//   shapeCoordinates: [
-//       [ 330, 160, 120 ],
-//       [ 680, 160, 120 ],
-//       [ 220, 420, 120 ],
-//       [ 790, 420, 120 ]
-//   ],
-//   colour: 'rgba(255, 195, 113, 0.8)',
-//   pattern: cartographer
-//
-// }
-
-
 
 export const diveWithout = {
   type: 'square',

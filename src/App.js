@@ -26,20 +26,20 @@ function App() {
   if (!isPlaying) {
     return (
     <div>
-    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
-    <div className="landingPage">
-    <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
-    <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
-    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
-    </div>
+      <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+      <div className="landingPage">
+        <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
+        <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
+        <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
+      </div>
     </div>
   )
 }
 
   return (
     <div>
-    <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
-    <PlaySpace preset={preset} presetName={presetName} type={type}/>
+      <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout}/>
+      <PlaySpace preset={preset} presetName={presetName} type={type}/>
     </div>
   )
 }

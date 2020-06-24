@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  background-attachment: fixed;
-}
-
 .nav-bar {
   position: fixed;
   background-color: #FF5F6D;
@@ -54,21 +47,6 @@
   font-size: 20px;
   left: 80px;
   bottom: 10%
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .App-logo-div {

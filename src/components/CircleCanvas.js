@@ -20,9 +20,7 @@ const CircleCanvas = ({nose,
   const canvasRef = useRef();
 
   useEffect(() => {
-
     if (nose.length === 0 ) return () => {}
-
       const ctx = canvasRef.current.getContext('2d');
 
       backgroundSound.play()
@@ -33,7 +31,6 @@ const CircleCanvas = ({nose,
       })
       trackCircles(updatedCircleCoordinates, sounds, nose);
       draw(ctx, nose, updatedCircleCoordinates, sounds, pattern, colour);
-
   }, [nose])
 
   useEffect(() => {
@@ -45,18 +42,15 @@ const CircleCanvas = ({nose,
 
   return (
     <div className="audioCanvas">
-
-    <canvas
-      id="canvas"
-      ref={canvasRef}
-      width={width}
-      height={height}
-      >
+      <canvas
+        id="canvas"
+        ref={canvasRef}
+        width={width}
+        height={height}
+        >
       </canvas>
-
     </div>
   )
-
 }
 
 export default CircleCanvas

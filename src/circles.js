@@ -12,9 +12,7 @@ function calculateDistance() {
   const dist = Math.sqrt((dX*dX) + (dY*dY));
 
   if (dist < firstCircle.r) return 'you crossed the circle';
-
 }
-
 
 function calculateRatio(xScale, yScale) {
   const initialDistance = Math.sqrt((300*300) + (150*150));
@@ -29,21 +27,16 @@ function calculateRatio(xScale, yScale) {
 
 console.log(calculateRatio(2, 1.8));
 
-
-
   if (posesString.length !== 0) {
-      if (posesString[0].part === 'nose') {
+    if (posesString[0].part === 'nose') {
 
-        circleCoordinates.forEach(circle => monitorCircleDistance(circle, posesString[0].part.position))
+      circleCoordinates.forEach(circle => monitorCircleDistance(circle, posesString[0].part.position))
 
-        function monitorCircleDistance([circleX, circleY, circleR], {x: noseX, y: noseY}) {
-          const distance = calculateDistance([circleX, circleY], noseX, noseY);
-          if (distance < circleR) cNote.play();
-}
-}
-
-
-
+      function monitorCircleDistance([circleX, circleY, circleR], {x: noseX, y: noseY}) {
+        const distance = calculateDistance([circleX, circleY], noseX, noseY);
+        if (distance < circleR) cNote.play();
+      }
+    }
       if (noseX > f.lowX && noseX < f.highX && noseY > f.lowY && noseY < f.highY) {
           cNote.play()
           console.log('upper right corner');

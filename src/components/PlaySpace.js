@@ -6,24 +6,11 @@ import { diveWithout } from '../presets/diveWithout'
 import CircleCanvas from './CircleCanvas.js'
 import SquareCanvas from './SquareCanvas.js'
 
-
-//   shapeCoordinates: [
-//       [ 330, 160, 120 ],
-//       [ 680, 160, 120 ],
-//       [ 220, 420, 120 ],
-//       [ 790, 420, 120 ]
-//   ],
-//   colour: 'rgba(255, 95, 109, 0.8)',
-//   pattern: cartographer
-// }
-
 function PlaySpace(
   {
     preset,
     type
-}
-
-) {
+  }) {
   const width = window.innerWidth - 300;
   const height = window.innerHeight;
   const [keypoints, setKeypoints] = useState([])
@@ -35,36 +22,29 @@ function PlaySpace(
     }
   }, [keypoints])
 
-
   return (
     <div className="App">
       <PoseNet
         inferenceConfig={{ decodingMethod: "single-person" }}
         onEstimate={poses => {
               if (poses.length !== 0) setKeypoints(poses[0].keypoints)
-        }} />
-
-
+        }}
+      />
         {type === 'square' ? (
           <SquareCanvas nose={nose}
-                  width={width}
-                  height={height}
-                  preset={diveWithout}
-                  play={type === 'square' ? true : false}
-
-                  />
-                ) : (
+                        width={width}
+                        height={height}
+                        preset={diveWithout}
+                        play={type === 'square' ? true : false}
+          />
+                    ) : (
           <CircleCanvas nose={nose}
-                  width={width}
-                  height={height}
-                  preset={diveWithin}
-                  play={type === 'circle' ? true : false}
-
-                  />
-
+                        width={width}
+                        height={height}
+                        preset={diveWithin}
+                        play={type === 'circle' ? true : false}
+          />
         )}
-
-
     </div>
   )
 }

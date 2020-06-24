@@ -8,12 +8,6 @@ function calculateScale(width, height) {
   }
 }
 
-
-
-
-
-
-
 const squareCoordinates = [
   [90, 40, 280, 280],
   [620, 40, 280, 280],
@@ -21,90 +15,12 @@ const squareCoordinates = [
   [620, 350, 280, 280]
 ]
 
-
-
-
-
-
-
-
-
-//
-//
-//   const firstShape = {
-//     lowX: 90 * widthScale,
-//     highX: (90+280) * widthScale,
-//     lowY: 40 * heightScale,
-//     highY: (40+280) * heightScale
-//   }
-//
-//   const secondShape = {
-//     lowX: 620 * widthScale,
-//     highX: (620+280) * widthScale,
-//     lowY: 40 * heightScale,
-//     highY: (40+280) * heightScale
-//   }
-//
-//   const thirdShape = {
-//     lowX: 90 * widthScale,
-//     highX: (90+280) * widthScale,
-//     lowY: 350 * heightScale,
-//     highY: (350+280) * heightScale
-//   }
-//
-//   const fourthShape = {
-//     lowX: 620 * widthScale,
-//     highX: (620+280) * widthScale,
-//     lowY: 350 * heightScale,
-//     highY: (350+280) * heightScale
-//   }
-//
-//   return [firstShape, secondShape, thirdShape, fourthShape];
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-// export function calculateCanvasCoordinates(width, height) {
-//   const firstShape = [90 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
-//   const secondShape = [620 * widthScale, 40 * heightScale, 280 * widthScale, 280 * heightScale]
-//   const thirdShape = [90 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
-//   const fourthShape = [620 * widthScale, 350 * heightScale, 280 * widthScale, 280 * heightScale]
-//
-//   return [firstShape, secondShape, thirdShape, fourthShape];
-// }
-
-
-
-
-// const [widthScale, heightScale] = calculateScale(1960, 1298);
-// console.log('Width Scale: ', widthScale);
-// console.log('Height Scale: ', heightScale);
-//
-//
-// const [firstShape, secondShape, thirdShape, fourthShape] = calculateAudioCoordinates(1960, 1298)
-// console.log('First Shape: ', firstShape);
-// console.log('Second Shape: ', secondShape);
-// console.log('Third Shape: ', thirdShape);
-// console.log('Fourth Shape: ',  fourthShape);
-
 const circleCoordinates = [
   [495, 200, 165],
   [905, 200, 165],
   [300, 530, 165],
   [1100, 530, 165]
 ]
-
-
-
 
 function prepareCanvasCircles(img, ctx, width, height, circleCoordinates, colour) {
   const [xScale, yScale] = calculateScale(width, height);
@@ -139,34 +55,8 @@ function calculateDistance([circleX, circleY], noseX, noseY) {
   return Math.sqrt((dX*dX) + (dY*dY));
 }
 
-
-
 function calculateAudioCoordinatesForCircles(width, height, circleCoordinates) {
   const [xScale, yScale] = calculateScale(width, height);
   const [x, y] = circleCoordinates[0]
   const rScale = calculateRadiusRatio(x, y, xScale, yScale);
-
-
-
-
-
 }
-
-
-//
-// function calculateDistance() {
-//   const firstCircle = {
-//     x: 495,
-//     y: 200,
-//     r: 165
-//   }
-//
-//   const nose = { x, y }
-//
-//   const dX = firstCircle.x - nose.x;
-//   const dY = firstCircle.y - nose.y;
-//   const dist = Math.sqrt((dX*dX) + (dY*dY));
-//
-//   if (dist < firstCircle.r) return 'you crossed the circle';
-//
-// }

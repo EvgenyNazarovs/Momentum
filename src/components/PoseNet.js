@@ -121,7 +121,6 @@ ctx2.clearRect(0, 0, width, height);
         ref={canvasRef1}
         width={width}
         height={height}
-
       />
     </>
   )

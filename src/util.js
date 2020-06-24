@@ -118,67 +118,14 @@ export const partIds =
       return result;
     }, {})
 
-
-
 export const connectedPartIndices = connectedPartNames.map(
     ([jointNameA, jointNameB]) => {
-  
   return  ([partIds[jointNameA], partIds[jointNameB]])
-
-
   })
 
 export function getAdjacentKeyPoints(keypoints) {
   return connectedPartIndices.reduce((result, [leftJoint, rightJoint]) => {
-
     result.push([keypoints[leftJoint], keypoints[rightJoint]])
     return result;
   }, [])
 }
-
-
-
-
-
-
-
-
-
-
-// export function drawSkeleton(ctx, keypoints, minConfidence) {
-//   const adjacentKeyPoints = posenet.getAdjacentKeyPoints(
-//     keypoints,
-//     minConfidence
-//   )
-//
-//   adjacentKeyPoints.forEach(keypoints => {
-//     drawSegment(
-//       toTuple(keypoints[0].position),
-//       toTuple(keypoints[1].position),
-//       "yellow",
-//       15,
-//       1,
-//       ctx
-//     )
-//   })
-// }
-//
-// function toTuple({x, y}) {
-//   return [x, y]
-// }
-//
-// function drawSegment(
-//   [firstX, firstY],
-//   [nextX, nextY],
-//   color,
-//   lineWidth,
-//   scale,
-//   canvasContext
-// ) {
-//   canvasContext.beginPath()
-//   canvasContext.moveTo(firstX * scale, firstY * scale)
-//   canvasContext.lineTo(nextX * scale, nextY * scale)
-//   canvasContext.lineWidth = lineWidth
-//   canvasContext.strokeStyle = color
-//   canvasContext.stroke()
-// }

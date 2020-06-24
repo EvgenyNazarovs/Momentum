@@ -8,18 +8,18 @@ import backgroundnew from '../sounds/backgroundnew.mp3'
 export const diveWithin = {
   type: 'circle',
   shapeCoordinates: [
-      [ 330, 160, 120 ],
-      [ 680, 160, 120 ],
-      [ 220, 420, 120 ],
-      [ 790, 420, 120 ]
+    [ 330, 160, 120 ],
+    [ 680, 160, 120 ],
+    [ 220, 420, 120 ],
+    [ 790, 420, 120 ]
   ],
   colour: 'rgba(255, 95, 109, 0.8)',
   pattern: cartographer,
   sounds: [
-        new Audio(jingleC),
-        new Audio(jingleG),
-        new Audio(jingleF),
-        new Audio (jingleC2)
+    new Audio(jingleC),
+    new Audio(jingleG),
+    new Audio(jingleF),
+    new Audio (jingleC2)
   ],
   backgroundSound: new Audio(backgroundnew)
 }
