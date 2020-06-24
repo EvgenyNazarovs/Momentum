@@ -3,13 +3,6 @@ import { drawSquaresAndTrackMovements } from '../utils/squares.js'
 import { calculateScale } from '../utils/canvas.js'
 import '../App.css'
 
-const colours = [
-  "RGB(203,58,254,0.8",
-  "rgba(190,96,124,0.8)",
-  "rgba(100,134,185,0.8)",
-  "rgba(173,171,196,0.8)"
-]
-
 const SquareCanvas = ({nose,
                  width,
                  height,
@@ -20,7 +13,9 @@ const SquareCanvas = ({nose,
                    sounds,
                    shapeCoordinates,
                    backgroundSound,
-                   colour
+                   pattern,
+                   colour,
+                   sounds
                    }}) => {
 
   const canvasRef = useRef();
@@ -36,11 +31,10 @@ const SquareCanvas = ({nose,
 
     backgroundSound.play()
 
-    drawSquaresAndTrackMovements(ctx, width, height, scaledSquareCoordinates, colour, sounds, nose)
 
-    // prepareCanvasWithSquares(ctx, width, height, shapeCoordinates, colour)
-    // const coordinates = calculateAudioCoordinates(width, height, shapeCoordinates);
-    // trackSquares(coordinates, sounds, nose, shapeCoordinates, ctx, width, height, colours);
+
+    drawSquaresAndTrackMovements(ctx, width, height, scaledSquareCoordinates, colour, sounds, nose, pattern)
+
 
   }, [nose])
 
