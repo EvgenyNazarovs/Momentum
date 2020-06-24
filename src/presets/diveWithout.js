@@ -17,8 +17,11 @@ export const diveWithout = {
      [200, 450, 200, 200],
      [670, 240, 200, 200]
   ],
-  colour: 'rgba(255, 195, 113, 0.9)',
   pattern: cardboard,
+  colour: [
+    "rgba(254,181,72,0.8)",
+    "rgba(100,134,185,0.8)"
+  ],
   sounds: [
     new Audio(bass),
     new Audio(percussion),

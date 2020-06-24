@@ -3,11 +3,9 @@ import PropTypes from "prop-types"
 import Loading from "./Loading"
 import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
-import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../util"
+import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../utils/posenet"
 import './PoseNet.css'
 import '../App.css'
-import { prepareCanvas, calculateAudioCoordinates, calculateScale } from '../canvasutil.js'
-
 
 export default function PoseNet({
   style,
@@ -76,7 +74,6 @@ ctx2.clearRect(0, 0, width, height);
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)
-
 
       }
       //potentially can modify the interval of scanning poses

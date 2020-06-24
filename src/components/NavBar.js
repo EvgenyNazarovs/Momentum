@@ -1,7 +1,5 @@
 import React from 'react';
 import styling from '../App.css';
-import { Link, Route, Switch } from 'react-router-dom'
-// import { diveWithin, diveWithout } from '../presets.js'
 import SquareCanvas from './SquareCanvas'
 import CircleCanvas from './CircleCanvas'
 

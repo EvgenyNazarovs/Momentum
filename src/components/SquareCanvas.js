@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { prepareCanvasWithSquares, calculateAudioCoordinates, trackSquares } from '../utils/squares.js'
+import { drawSquaresAndTrackMovements } from '../utils/squares.js'
+import { calculateScale } from '../utils/canvas.js'
 import '../App.css'
 
 const SquareCanvas = ({nose,
@@ -9,6 +10,7 @@ const SquareCanvas = ({nose,
                  play,
                  preset:
                  { type,
+                   sounds,
                    shapeCoordinates,
                    backgroundSound,
                    pattern,
@@ -16,10 +18,11 @@ const SquareCanvas = ({nose,
                    sounds
                    }}) => {
 
-
-
   const canvasRef = useRef();
-
+  const [widthScale, heightScale] = calculateScale(width, height)
+  const scaledSquareCoordinates = shapeCoordinates.map(([s1,s2,s3,s4]) => {
+    return [s1 * widthScale, s2 * heightScale, s3 * widthScale, s4 * heightScale]
+  })
 
   useEffect(() => {
     if (nose.length === 0) return () => {}
@@ -28,9 +31,10 @@ const SquareCanvas = ({nose,
 
     backgroundSound.play()
 
-    prepareCanvasWithSquares(ctx, width, height, shapeCoordinates, colour, pattern)
-    const coordinates = calculateAudioCoordinates(width, height, shapeCoordinates);
-    trackSquares(coordinates, sounds, nose);
+
+
+    drawSquaresAndTrackMovements(ctx, width, height, scaledSquareCoordinates, colour, sounds, nose, pattern)
+
 
   }, [nose])
 

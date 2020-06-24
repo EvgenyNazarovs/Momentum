@@ -6,17 +6,6 @@ import { diveWithout } from '../presets/diveWithout'
 import CircleCanvas from './CircleCanvas.js'
 import SquareCanvas from './SquareCanvas.js'
 
-
-//   shapeCoordinates: [
-//       [ 330, 160, 120 ],
-//       [ 680, 160, 120 ],
-//       [ 220, 420, 120 ],
-//       [ 790, 420, 120 ]
-//   ],
-//   colour: 'rgba(255, 95, 109, 0.8)',
-//   pattern: cartographer
-// }
-
 function PlaySpace(
   {
     preset,
@@ -34,7 +23,6 @@ function PlaySpace(
       setNose(keypoints[0]);
     }
   }, [keypoints])
-
 
   return (
     <div className="App">
@@ -63,7 +51,6 @@ function PlaySpace(
                   />
 
         )}
-
 
     </div>
   )

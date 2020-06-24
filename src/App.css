@@ -99,7 +99,7 @@
   font-size: 25px;
   position:fixed;
   left: 280px;
-  top: 35%;
+  top: 30%;
   right: 10%;
 }
 
@@ -109,7 +109,7 @@
   font-size: 20px;
   position:fixed;
   left: 280px;
-  top: 41%;
+  top: 47%;
   right: 10%;
 }
 
@@ -126,7 +126,7 @@
 	padding:13px 32px;
   position:fixed;
   left: 280px;
-  top: 49%;
+  top: 55%;
   right: 10%;
   transition: 0.5s;
 }

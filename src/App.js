@@ -28,9 +28,9 @@ function App() {
     <div>
     <NavBar setDiveWithin={setDiveWithin} setDiveWithout={setDiveWithout} presetName={presetName}/>
     <div className="landingPage">
-    <p className="landingPage-text">This app lets you experience your movement through sound and vision.</p>
+    <p className="landingPage-text">This app lets you experience sound and vision through your movement. You can play different sounds by hovering your nose over shapes on the screen.</p>
     <p className="landingPage-subtext">For best results, use the latest version of Google Chrome and wear headphones.</p>
-    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start Experience</button>
+    <button className="landingPage-button" onClick={() => setIsPlaying(true)}>Start</button>
     </div>
     </div>
   )
