@@ -10,9 +10,7 @@ function PlaySpace(
   {
     preset,
     type
-}
-
-) {
+  }) {
   const width = window.innerWidth - 300;
   const height = window.innerHeight;
   const [keypoints, setKeypoints] = useState([])
@@ -28,28 +26,24 @@ function PlaySpace(
     <div className="App">
       <PoseNet
         inferenceConfig={{ decodingMethod: "single-person" }}
-        onEstimate={poses => {
-              if (poses.length !== 0) setKeypoints(poses[0].keypoints)
-        }} />
-
-
+        onEstimate={ poses => {
+          if (poses.length !== 0) setKeypoints(poses[0].keypoints)
+        }}
+      />
         {type === 'square' ? (
           <SquareCanvas nose={nose}
-                  width={width}
-                  height={height}
-                  preset={diveWithout}
-                  play={type === 'square' ? true : false}
-
-                  />
-                ) : (
+                        width={width}
+                        height={height}
+                        preset={diveWithout}
+                        play={type === 'square' ? true : false}
+          />
+                    ) : (
           <CircleCanvas nose={nose}
-                  width={width}
-                  height={height}
-                  preset={diveWithin}
-                  play={type === 'circle' ? true : false}
-
-                  />
-
+                        width={width}
+                        height={height}
+                        preset={diveWithin}
+                        play={type === 'circle' ? true : false}
+          />
         )}
 
     </div>

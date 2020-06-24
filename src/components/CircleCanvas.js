@@ -4,25 +4,25 @@ import { prepareCanvasCircles, calculateDistance, trackCircles, calculateCircleS
 import '../App.css'
 
 
-const CircleCanvas = ({nose,
-                 width,
-                 height,
-                 presetName,
-                 play,
-                 preset:
-                 { type,
-                   shapeCoordinates,
-                   colour,
-                   sounds,
-                   backgroundSound,
-                   pattern = "" }}) => {
+const CircleCanvas = ({
+                        nose,
+                        width,
+                        height,
+                        presetName,
+                        play,
+                        preset:
+                      {
+                        type,
+                        shapeCoordinates,
+                        colour,
+                        sounds,
+                        backgroundSound,
+                        pattern}}) => {
 
   const canvasRef = useRef();
 
   useEffect(() => {
-
     if (nose.length === 0 ) return () => {}
-
       const ctx = canvasRef.current.getContext('2d');
 
       backgroundSound.play()
@@ -33,7 +33,6 @@ const CircleCanvas = ({nose,
       })
       trackCircles(updatedCircleCoordinates, sounds, nose);
       draw(ctx, nose, updatedCircleCoordinates, pattern, colour);
-
   }, [nose])
 
   useEffect(() => {
@@ -45,18 +44,15 @@ const CircleCanvas = ({nose,
 
   return (
     <div className="audioCanvas">
-
-    <canvas
-      id="canvas"
-      ref={canvasRef}
-      width={width}
-      height={height}
-      >
+      <canvas
+        id="canvas"
+        ref={canvasRef}
+        width={width}
+        height={height}
+        >
       </canvas>
-
     </div>
   )
-
 }
 
 export default CircleCanvas

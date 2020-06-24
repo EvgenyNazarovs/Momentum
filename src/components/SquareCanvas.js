@@ -46,19 +46,14 @@ const SquareCanvas = ({nose,
 
   return (
     <div>
-
-
-
-    <canvas
-      id="canvas"
-      ref={canvasRef}
-      width={width}
-      height={height}
-      >
-
+      <canvas
+        id="canvas"
+        ref={canvasRef}
+        width={width}
+        height={height}
+        >
       </canvas>
-
-      </div>
+    </div>
   )
 }
 

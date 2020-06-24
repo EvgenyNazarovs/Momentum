@@ -25,39 +25,38 @@ export function draw(ctx, bodyPart, circleCoordinates, imgFile, colour) {
     }
 
     this.update = function() {
-        if (bodyX - circleX < minRadius && bodyX - circleX > - minRadius && bodyY - circleY < minRadius && bodyY - circleY > - minRadius) {
-          if (circleRadius < maxRadius) {
-            circleRadius += 4;
-          }
-        } else if (circleRadius > minRadius) {
-            circleRadius -= 1;
+      if (bodyX - circleX < minRadius && bodyX - circleX > - minRadius && bodyY - circleY < minRadius && bodyY - circleY > - minRadius) {
+        if (circleRadius < maxRadius) {
+          circleRadius += 4;
         }
-
-        this.draw();
+      } else if (circleRadius > minRadius) {
+          circleRadius -= 1;
       }
+
+      this.draw();
     }
+  }
 
-    let circleArray = [];
+  let circleArray = [];
 
-    function init() {
-      circleArray = [];
-      circleCoordinates.forEach(([x, y, r]) => {
-        circleArray.push(new Circle(x, y ,r))
-      })
-    }
+  function init() {
+    circleArray = [];
+    circleCoordinates.forEach(([x, y, r]) => {
+      circleArray.push(new Circle(x, y ,r))
+    })
+  }
 
-    init();
+  init();
 
-    function animate() {
-      requestAnimationFrame(animate);
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+  function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
 
       for (let i = 0; i < circleArray.length; i++) {
         circleArray[i].update();
       }
     }
-
-    animate();
+    animate()
   }
 
 export function calculateDistance([circleX, circleY], noseX, noseY) {

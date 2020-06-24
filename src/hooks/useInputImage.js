@@ -2,6 +2,7 @@ import to from "await-to-js"
 import { useState, useEffect } from "react"
 import { checkUserMediaError, getMediaStreamConstraints } from "../utils/posenet"
 
+
 export default function useInputImage({
   input,
   width,
@@ -47,7 +48,6 @@ export default function useInputImage({
     }
     setupCamera()
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       const stream = videoRef.current.srcObject
       stream.getTracks().forEach(track => track.stop())
     }

@@ -1,9 +1,5 @@
 import { calculateScale } from './canvas.js'
 
-
-
-
-
 export function drawSquaresAndTrackMovements(ctx, width, height, squareCoordinates, style, sounds, bodyPart, pattern) {
   const img = new Image();
   img.src = pattern;
