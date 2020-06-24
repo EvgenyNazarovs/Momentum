@@ -10,7 +10,6 @@ const SquareCanvas = ({nose,
                  play,
                  preset:
                  { type,
-                   sounds,
                    shapeCoordinates,
                    backgroundSound,
                    pattern,
