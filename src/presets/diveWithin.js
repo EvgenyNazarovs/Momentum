@@ -25,7 +25,7 @@ export const diveWithin = {
     new Audio(jingleF),
     new Audio(jingleC2),
     new Audio(guitarpicking),
-      new Audio(guitarstrumming)
+    new Audio(guitarstrumming)
   ],
   backgroundSound: new Audio(backgroundnew)
 }

@@ -142,18 +142,17 @@ h1 {
 }
 
 canvas {
-    position:absolute;
-    left:240px;
-    width:82vw;
-    height: 100vh;
-  }
+  position:absolute;
+  left:240px;
+  width:82vw;
+  height: 100vh;
+}
+
+video {
+  position: absolute;
+  left:240px;
+  width: 82vw;
+  height: 100vh;
 
 
-  video {
-    position: absolute;
-    left:240px;
-    width: 82vw;
-    height: 100vh;
-
-
-  }
+}
