@@ -49,7 +49,6 @@ export function drawWithNose(ctx, keypoints) {
 
     ctx.lineTo(x, y)
     ctx.stroke()
-    // ctx.beginPath()
     ctx.moveTo(x, y)
   }
 }
@@ -114,10 +113,10 @@ export const partNames = [
 ];
 
 export const partIds =
-    partNames.reduce((result, jointName, i) => {
-      result[jointName] = i;
-      return result;
-    }, {})
+  partNames.reduce((result, jointName, i) => {
+    result[jointName] = i;
+    return result;
+  }, {})
 
 export const connectedPartIndices = connectedPartNames.map(
     ([jointNameA, jointNameB]) => {

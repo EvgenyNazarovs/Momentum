@@ -68,11 +68,11 @@ export default function PoseNet({
 
         ctx.globalAlpha = 0.9
 
-ctx2.clearRect(0, 0, width, height);
+        ctx2.clearRect(0, 0, width, height);
 
         onEstimateRef.current(confidentPoses)
         confidentPoses.forEach(({ keypoints }) => { drawKeypoints(ctx2, keypoints)
-})
+        })
       } catch (err) {
         clearInterval(intervalID)
         setErrorMessage(err.message)

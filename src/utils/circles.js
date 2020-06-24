@@ -1,13 +1,6 @@
 import { calculateScale } from './canvas.js'
 
 
-const circleCoordinates = [
-  [ 330, 160, 120 ],
-  [ 680, 160, 120 ],
-  [ 220, 420, 120 ],
-  [ 790, 420, 120 ]
-]
-
 export function draw(ctx, bodyPart, circleCoordinates, notes, imgFile, colour) {
   ctx.clearRect(0, 0, 1000, 1000);
   const {x: bodyX, y: bodyY} = bodyPart.position;
@@ -33,41 +26,40 @@ export function draw(ctx, bodyPart, circleCoordinates, notes, imgFile, colour) {
     }
 
     this.update = function() {
-        if (bodyX - circleX < minRadius && bodyX - circleX > - minRadius && bodyY - circleY < minRadius && bodyY - circleY > - minRadius) {
-          if (circleRadius < maxRadius) {
-            circleRadius += 4;
-          }
-        } else if (circleRadius > minRadius) {
-            circleRadius -= 1;
+      if (bodyX - circleX < minRadius && bodyX - circleX > - minRadius && bodyY - circleY < minRadius && bodyY - circleY > - minRadius) {
+        if (circleRadius < maxRadius) {
+          circleRadius += 4;
         }
-
-        this.draw();
+      } else if (circleRadius > minRadius) {
+          circleRadius -= 1;
       }
+
+      this.draw();
     }
-
-    let circleArray = [];
-
-    function init() {
-      circleArray = [];
-      circleCoordinates.forEach(([x, y, r]) => {
-        circleArray.push(new Circle(x, y ,r))
-      })
-    }
-
-    init();
-
-    function animate() {
-      requestAnimationFrame(animate);
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-
-      for (let i = 0; i < circleArray.length; i++) {
-        circleArray[i].update();
-
-      }
-    }
-
-    animate();
   }
+
+  let circleArray = [];
+
+  function init() {
+    circleArray = [];
+    circleCoordinates.forEach(([x, y, r]) => {
+      circleArray.push(new Circle(x, y ,r))
+    })
+  }
+
+  init();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+    for (let i = 0; i < circleArray.length; i++) {
+      circleArray[i].update();
+
+    }
+  }
+    animate();
+}
 
 export function calculateDistance([circleX, circleY], noseX, noseY) {
   const dX = circleX - noseX;
@@ -92,7 +84,6 @@ export function trackCircles(circleCoordinates, sounds, bodyPart) {
     if (dist < cR) {
       sounds[index].play();
       console.log(sounds[index]);
-      //insert animation
     }
   })
 }

@@ -27,8 +27,8 @@ function PlaySpace(
     <div className="App">
       <PoseNet
         inferenceConfig={{ decodingMethod: "single-person" }}
-        onEstimate={poses => {
-              if (poses.length !== 0) setKeypoints(poses[0].keypoints)
+        onEstimate={ poses => {
+          if (poses.length !== 0) setKeypoints(poses[0].keypoints)
         }}
       />
         {type === 'square' ? (

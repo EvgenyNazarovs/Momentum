@@ -48,7 +48,6 @@ export default function useInputImage({
     }
     setupCamera()
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       const stream = videoRef.current.srcObject
       stream.getTracks().forEach(track => track.stop())
     }

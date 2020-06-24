@@ -8,20 +8,6 @@ function calculateScale(width, height) {
   }
 }
 
-const squareCoordinates = [
-  [90, 40, 280, 280],
-  [620, 40, 280, 280],
-  [90, 350, 280, 280],
-  [620, 350, 280, 280]
-]
-
-const circleCoordinates = [
-  [495, 200, 165],
-  [905, 200, 165],
-  [300, 530, 165],
-  [1100, 530, 165]
-]
-
 function prepareCanvasCircles(img, ctx, width, height, circleCoordinates, colour) {
   const [xScale, yScale] = calculateScale(width, height);
   const [x, y] = circleCoordinates[0]
@@ -38,7 +24,6 @@ function prepareCanvasCircles(img, ctx, width, height, circleCoordinates, colour
     ctx.fill(newCircle);
   })
 }
-
 
 function calculateRadiusRatio(x, y, xScale, yScale) {
   const initialDistance = Math.sqrt((x * x) + (y * y));

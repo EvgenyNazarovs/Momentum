@@ -50,5 +50,5 @@ console.log(calculateRatio(2, 1.8));
         aNote.play()
         console.log('lower left corner');
       }
-    }
-  }}, [posesString])
+  }
+}}, [posesString])
