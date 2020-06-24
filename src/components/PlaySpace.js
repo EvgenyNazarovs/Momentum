@@ -45,7 +45,6 @@ function PlaySpace(
                         play={type === 'circle' ? true : false}
           />
         )}
-
     </div>
   )
 }

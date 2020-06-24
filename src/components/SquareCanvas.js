@@ -3,19 +3,20 @@ import { drawSquaresAndTrackMovements } from '../utils/squares.js'
 import { calculateScale } from '../utils/canvas.js'
 import '../App.css'
 
-const SquareCanvas = ({nose,
-                 width,
-                 height,
-                 presetName,
-                 play,
-                 preset:
-                 { type,
-                   shapeCoordinates,
-                   backgroundSound,
-                   pattern,
-                   colour,
-                   sounds
-                   }}) => {
+const SquareCanvas = ({
+                        nose,
+                        width,
+                        height,
+                        presetName,
+                        play,
+                        preset:
+                      { type,
+                        shapeCoordinates,
+                        backgroundSound,
+                        pattern,
+                        colour,
+                        sounds
+                      }}) => {
 
   const canvasRef = useRef();
   const [widthScale, heightScale] = calculateScale(width, height)
@@ -27,14 +28,8 @@ const SquareCanvas = ({nose,
     if (nose.length === 0) return () => {}
 
     const ctx = canvasRef.current.getContext('2d');
-
     backgroundSound.play()
-
-
-
     drawSquaresAndTrackMovements(ctx, width, height, scaledSquareCoordinates, colour, sounds, nose, pattern)
-
-
   }, [nose])
 
   useEffect(() => {
