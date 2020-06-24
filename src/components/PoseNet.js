@@ -5,10 +5,6 @@ import useInputImage from "../hooks/useInputImage"
 import useLoadPoseNet from "../hooks/useLoadPoseNet"
 import { drawKeypoints, getConfidentPoses, drawSkeleton, drawWithNose, getAdjacentKeyPoints } from "../utils/posenet"
 import './PoseNet.css'
-<<<<<<< HEAD
-import texture1 from '../assets/Texture1.png'
-=======
->>>>>>> e039c9aaed7df5e88f1467e321a9ddee59947f53
 import '../App.css'
 
 export default function PoseNet({

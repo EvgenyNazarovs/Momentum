@@ -1,6 +1,7 @@
 import { calculateScale } from './canvas.js'
 
-export function draw(ctx, bodyPart, circleCoordinates, imgFile, colour) {
+
+export function draw(ctx, bodyPart, circleCoordinates, notes, imgFile, colour) {
   ctx.clearRect(0, 0, 1000, 1000);
   const {x: bodyX, y: bodyY} = bodyPart.position;
   let maxRadius = circleCoordinates[0][2] + 30
@@ -52,12 +53,13 @@ export function draw(ctx, bodyPart, circleCoordinates, imgFile, colour) {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
 
-      for (let i = 0; i < circleArray.length; i++) {
-        circleArray[i].update();
-      }
+    for (let i = 0; i < circleArray.length; i++) {
+      circleArray[i].update();
+
     }
-    animate()
   }
+    animate();
+}
 
 export function calculateDistance([circleX, circleY], noseX, noseY) {
   const dX = circleX - noseX;
@@ -81,6 +83,7 @@ export function trackCircles(circleCoordinates, sounds, bodyPart) {
     const dist = calculateDistance([cX, cY], partX, partY);
     if (dist < cR) {
       sounds[index].play();
+      console.log(sounds[index]);
     }
   })
 }
