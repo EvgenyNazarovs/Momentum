@@ -1,12 +1,12 @@
 import { calculateScale } from './canvas.js'
 
 
-export function draw(ctx, bodyPart, circleCoordinates, notes, imgFile, colour) {
+export function draw(ctx, bodyPart, circleCoordinates, imgFile, colour) {
   ctx.clearRect(0, 0, 1000, 1000);
   const {x: bodyX, y: bodyY} = bodyPart.position;
   let maxRadius = circleCoordinates[0][2] + 30
 
-  function Circle(x, y, r, notes) {
+  function Circle(x, y, r) {
     const circleX = x;
     const circleY = y;
     let circleRadius = r;
