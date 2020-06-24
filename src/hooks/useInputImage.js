@@ -1,6 +1,6 @@
 import to from "await-to-js"
 import { useState, useEffect } from "react"
-import { checkUserMediaError, getMediaStreamConstraints } from "../util"
+import { checkUserMediaError, getMediaStreamConstraints } from "../utils/posenetUtils"
 
 export default function useInputImage({
   input,

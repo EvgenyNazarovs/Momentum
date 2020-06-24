@@ -27,9 +27,6 @@ export function calculateAudioCoordinates(width, height, squareCoordinates) {
 
 export function trackSquares(shapes, notes, bodyPart) {
   const { x: partX, y: partY } = bodyPart.position;
-  console.log(notes);
-  console.log(partX, partY);
-  console.log(shapes);
 
   shapes.forEach(({lowX, highX, lowY, highY}, index) => {
     if (partX > lowX && partX < highX && partY > lowY && partY < highY) {

@@ -32,7 +32,7 @@ const CircleCanvas = ({nose,
         return [x * xScale, y * yScale, r * rScale]
       })
       trackCircles(updatedCircleCoordinates, sounds, nose);
-      draw(ctx, nose, updatedCircleCoordinates, sounds, pattern, colour);
+      draw(ctx, nose, updatedCircleCoordinates, pattern, colour);
 
   }, [nose])
 
