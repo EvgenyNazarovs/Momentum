@@ -4,18 +4,19 @@ import { prepareCanvasCircles, calculateDistance, trackCircles, calculateCircleS
 import '../App.css'
 
 
-const CircleCanvas = ({nose,
-                 width,
-                 height,
-                 presetName,
-                 play,
-                 preset:
-                 { type,
-                   shapeCoordinates,
-                   colour,
-                   sounds,
-                   backgroundSound,
-                   pattern = "" }}) => {
+const CircleCanvas = ({
+                        nose,
+                        width,
+                        height,
+                        presetName,
+                        play,
+                        preset:
+                      { type,
+                        shapeCoordinates,
+                        colour,
+                        sounds,
+                        backgroundSound,
+                        pattern = "" }}) => {
 
   const canvasRef = useRef();
 
