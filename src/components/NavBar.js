@@ -18,7 +18,7 @@ const NavBar = ({ setDiveWithin, setDiveWithout, presetName }) => {
       <h1 id="nav-title">Momentum</h1>
       <div id="nav-icons">
         <img className={ presetName === 'diveWithin' ? 'selected-icon' : 'icon'} onClick={handleDiveWithin} id="nav-yoga-icon" width="130px" src="https://www.minorsan.com/wp-content/uploads/2015/04/yoga.png" alt=""/>
-        <img className={ presetName === 'diveWithout' ? "selected-icon" : "icon"} onClick={handleDiveWithout} id="nav-dance-icon" width="125px" src="https://www.materialui.co/materialIcons/hardware/speaker_white_192x192.png" alt=""/>
+        <img className={ presetName === 'diveWithout' ? "selected-icon" : "icon"} onClick={handleDiveWithout} id="nav-dance-icon" width="125px" src="https://www.iconsdb.com/icons/preview/white/speaker-xxl.png" alt=""/>
       </div>
       <div id="best-hp">
         <p id="hp-text">Best with</p>
